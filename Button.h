@@ -55,6 +55,10 @@ public:
 		text.surface = TTF_RenderUTF8_Solid(text.font, text.text.c_str(), text.color);
 		text.texture = SDL_CreateTextureFromSurface(ren, text.surface);
 	}
+	SDL_Rect* get_coord() {
+		SDL_Rect dst = { x,y,w,h };
+		return &dst;
+	}
 	void RenderTexture(SDL_Renderer* ren) {
 		SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
 		SDL_Rect dst = { x,y,w,h };
@@ -75,6 +79,7 @@ public:
 		text.y += y;
 		text.x += x;
 	}
+	
 	~Button() {
 		
 		
