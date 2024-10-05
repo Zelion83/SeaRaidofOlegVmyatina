@@ -18,9 +18,9 @@
 #include<ctime>
 SDL_Window* window = NULL;
 
-
-
-
+//ХУУУУУУУУУУУgУУУУЙ
+//гооооооол
+//ааааа
 int main(int argc, char* argv[]) {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		printf("error %s", SDL_GetError());
