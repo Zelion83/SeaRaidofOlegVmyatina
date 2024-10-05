@@ -75,17 +75,17 @@ public:
                         current_level = ADVENTURE;
                         break;
                     }
-                    if (typeid(T).name() == "class Tavern * __ptr64") {
+                    //if (typeid(T).name() == "class Tavern * __ptr64") {
                         if (buttons[currentrow][currentbutton]->get_text() == "next") {
                             par->page = 2;
-                            par->item_manager.buttons[0][0]->is_active = true;
+                            //par->item_manager.buttons[0][0]->is_active = true;
                             break;
                         }
                         if (buttons[currentrow][currentbutton]->get_text() == "back") {
                             par->page = 1;
                             break;
                         }
-                    }
+                   // }
                     if (buttons[currentrow][currentbutton]->get_text() == "INVENTORY") {
                         current_level = INVENTORY;
                         break;
