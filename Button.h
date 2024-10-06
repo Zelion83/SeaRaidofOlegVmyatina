@@ -87,6 +87,9 @@ public:
 		if (isCursorInsideRect(dst)) {
 			is_active = true;
 		}
+		else {
+			is_active = false;
+		}
 		RenderTexture(ren);
 		text.RenderTexture(ren);
 	}
