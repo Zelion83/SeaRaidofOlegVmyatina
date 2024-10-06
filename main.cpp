@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
 				
 					if (ev.type == SDL_KEYDOWN) {
 
-						menu->manager.switchButton(ev.key.keysym.sym,menu);
+						//menu->manager.switchButton(ev.key.keysym.sym,menu);
 					}
 				
 

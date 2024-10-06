@@ -69,7 +69,24 @@ public:
 			SDL_RenderCopy(ren, newtexture, nullptr, &dst);
 		}
 	}
+	bool isCursorInsideRect(SDL_Rect& dst) {
+		int cursorX, cursorY;
+		SDL_GetMouseState(&cursorX, &cursorY);
+
+		if (cursorX >= dst.x && cursorX <= dst.x + dst.w &&
+			cursorY >= dst.y && cursorY <= dst.y + dst.h) {
+			return 1;
+		}
+		else {
+			return 0;
+		}
+	}
 	void update(SDL_Renderer* ren) {
+		SDL_Rect dst = { x,y,w,h };
+		
+		if (isCursorInsideRect(dst)) {
+			is_active = true;
+		}
 		RenderTexture(ren);
 		text.RenderTexture(ren);
 	}
