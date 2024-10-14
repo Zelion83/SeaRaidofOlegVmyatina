@@ -57,6 +57,7 @@ protected:
 public:
 	friend class ButtonManager;
 	friend class Inventory;
+	friend class Tavern;
 	Ship(int size, int gold) {
 		crewsize = size;
 		this->gold = gold;
@@ -90,8 +91,24 @@ public:
 			push_back(freak);
 		}
 	};
-	void add_item(Item* item) {
-		inventory.push_back(item);
+//std::string mtext = itemss[i]->name + " :	" + itemss[i]->opisanie + " price: " + std::to_string(itemss[i]->price);
+	auto decode(std::string s) {
+		std::stringstream ss(s);
+		std::string opisanie, name,musor1,musor2;
+		int price = 0;
+		ss << name << musor1 << opisanie << musor2 << price;
+		//Item* itemm = new Item(name.c_str(), opisanie.c_str(), "textures/cat.png", price, ren);
+		for (int i = 0; i < items.size(); ++i) {
+			if (items[i]->get_name() == name) {
+				return items[i];
+			}
+		}
+		int index = 0;
+		//auto it = std::find(items.begin(), items.end(), itemm);
+		//return *it;
+	}
+	void add_item(std::string s) {
+		inventory.push_back(decode(s));
 	}
 
 	/*
