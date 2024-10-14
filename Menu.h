@@ -35,7 +35,7 @@ public:
 	}
 	void manageButton(size_t type){
 		Level::manageButton();
-		if (type == SDL_MOUSEBUTTONUP) {
+		if (type == SDL_MOUSEBUTTONDOWN && currentrow!=-1 && currentbutton != -1) {
 			if (buttons[currentrow][currentbutton]->get_text() == "new game") {
 				current_level = TAVERN;
 			}

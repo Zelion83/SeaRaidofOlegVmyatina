@@ -2,6 +2,7 @@
 #include<sstream>
 #include"Sprite.h"
 #include"Text.h"
+#include"Level.h"
 #include"Button.h"
 #include"Button_manager.h"
 #include"Ship&Sailor.h"
@@ -15,6 +16,7 @@ public:
 	std::vector<Sailor> freaks;
 	std::vector<Item*> itemss;
 	std::vector<Button> button_freaks;
+	std::vector<std::vector<Button*>> itbuttons;
 	int current_button = 0;
 	int page = 1;
 	Tavern(SDL_Renderer* ren, Ship& ship, int page) {
@@ -35,9 +37,9 @@ public:
 			std::vector<Button*> iw;
 			std::vector<Button*> iq;
 			int chislo = genious_random(2, 10);
-			int chislo1 = genious_random(0, items.size());
+			int chislo1 = genious_random(1, items.size()-1);
 			for (int i = 0; i < chislo1; ++i) {
-				Item* item = items[genious_random(0, items.size())];
+				Item* item = items[genious_random(0, items.size()-1)];
 				itemss.push_back(item);
 			}
 			for (int i = 0; i < chislo + 1; i++) {
@@ -89,21 +91,39 @@ public:
 			if (e.size() > 0)addButtonRow(e);
 			addButtonRow(q);
 			//buttons[0][0]->is_active = true;
-			buttons.push_back(iw);
-			buttons.push_back(iq);
+			itbuttons.push_back(iw);
+			itbuttons.push_back(iq);
+	}
+	virtual void manageButton() {
+		currentrow = -1;
+		currentbutton = -1;
+		for (int i = 0; i < itbuttons.size(); i++) {
+			for (int j = 0; j < itbuttons[i].size(); j++) {
+				if (itbuttons[i][j]->is_active) {
+					currentrow = i;
+					currentbutton = j;
+					break;
+				}
+			}
+			if (currentrow != -1) break;
+		}
+
+		if (currentrow == -1) return;
+
 	}
 	void tavern_update(SDL_Renderer* ren, Ship& ship) {
 
 		if (page == 1) {
 
+		
+				for (int i = 0; i < buttons.size(); i++) {
 
-			for (int i = 0; i < buttons.size(); i++) {
+					for (int j = 0; j < buttons[i].size(); j++) {
+						buttons[i][j]->update(ren);
+					}
 
-				for (int j = 0; j < buttons[i].size(); j++) {
-					buttons[i][j]->update(ren);
 				}
-
-			}
+		
 			pikcha->update(ren);
 			gold->update(ren);
 			std::stringstream ss;
@@ -114,6 +134,7 @@ public:
 			tgold->RenderTexture(ren);
 		}
 		if (page == 2) {
+			Tavern::manageButton();
 			/*
 			std::vector<Button*> it;
 			for (int i = 0; i < item_manager.buttons.size(); ++i) {
@@ -124,19 +145,48 @@ public:
 				it.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, s.c_str(), 36, { 100,100,500,100 }, "textures/active_fon.png"));
 			}
 			*/
-			for (int i = 0; i < buttons.size(); i++) {
+			
+			for (int i = 0; i < itbuttons.size(); i++) {
 
-				for (int j = 0; j < buttons[i].size(); j++) {
-					buttons[i][j]->update(ren);
+				for (int j = 0; j < itbuttons[i].size(); j++) {
+					itbuttons[i][j]->update(ren);
 				}
 
 			}
 		}
 	}
 	void manage_buttons(size_t type) {
-		if (type == SDL_MOUSEBUTTONDOWN) {
+		if(page == 1)Level::manageButton();
+		if(page == 2)Tavern::manageButton();
+		if (type == SDL_MOUSEBUTTONDOWN && currentrow != -1 && currentbutton != -1) {
 			if (buttons[currentrow][currentbutton]->get_text() == "go to the adventure") {
 				current_level = ADVENTURE;
+			}
+			if (buttons[currentrow][currentbutton]->get_text() == "next") {
+				page = 2;
+				return;
+			}
+			if (page == 2) {
+				if (itbuttons[currentrow][currentbutton]->get_text() == "back") {
+					page = 1;
+					return;
+				}
+				if (ship.crew.size() < ship.crewsize) {
+					ship.add_item(itbuttons[currentrow][currentbutton]->get_text());
+					itbuttons[currentrow].erase(itbuttons[currentrow].begin() + currentbutton);
+
+					for (int j = currentbutton; j < itbuttons[currentrow].size(); j++) {
+						itbuttons[currentrow][j]->change_coord(0, -100);
+					}
+				}
+			}
+			if (ship.crew.size() < ship.crewsize) {
+				ship.push_string(buttons[currentrow][currentbutton]->get_text());
+				buttons[currentrow].erase(buttons[currentrow].begin() + currentbutton);
+
+				for (int j = currentbutton; j < buttons[currentrow].size(); j++) {
+					buttons[currentrow][j]->change_coord(0, -100);
+				}
 			}
 		}
 	}

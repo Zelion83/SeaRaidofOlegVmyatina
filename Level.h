@@ -13,7 +13,8 @@ public:
 	
     
     virtual void manageButton() {
-        
+        currentrow = -1;
+        currentbutton = -1;
         for (int i = 0; i < buttons.size(); i++) {
             for (int j = 0; j < buttons[i].size(); j++) {
                 if (buttons[i][j]->is_active) {

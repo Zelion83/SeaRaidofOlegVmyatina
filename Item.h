@@ -16,5 +16,7 @@ public:
 		texture = IMG_LoadTexture(ren, path);
 		this->price = price;
 	};
-
+	std::string get_name() {
+		return name;
+	}
 };
