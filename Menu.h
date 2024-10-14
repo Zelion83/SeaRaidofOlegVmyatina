@@ -33,12 +33,13 @@ public:
 			buttons[0][i]->update(ren);
 		}
 	}
-	void manageButton(SDL_Event ev) override{
-		Level::manageButton(ev);
-		if (ev.type == SDL_MOUSEBUTTONDOWN) {
+	void manageButton(size_t type){
+		Level::manageButton();
+		if (type == SDL_MOUSEBUTTONUP) {
 			if (buttons[currentrow][currentbutton]->get_text() == "new game") {
 				current_level = TAVERN;
 			}
 		}
+		
 	}
 };

@@ -12,7 +12,7 @@ public:
 	}
 	
     
-    virtual void manageButton(SDL_Event ev) {
+    virtual void manageButton() {
         
         for (int i = 0; i < buttons.size(); i++) {
             for (int j = 0; j < buttons[i].size(); j++) {

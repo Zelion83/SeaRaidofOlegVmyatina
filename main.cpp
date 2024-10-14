@@ -64,10 +64,10 @@ int main(int argc, char* argv[]) {
 				}
 				
 				
-					if (ev.type == SDL_KEYDOWN) {
+					
 
-						menu->manageButton(ev);
-					}
+						menu->manageButton(ev.type);
+					
 				
 
 					menu->update(ren);
@@ -85,12 +85,8 @@ int main(int argc, char* argv[]) {
 					delete inventory; inventory = nullptr;
 				}
 				if(tavern == nullptr) tavern = new Tavern(ren,ship,1);
-				if (ev.type == SDL_KEYDOWN) {
-					if(tavern->page == 1)
-					tavern->manager.switchButton(ev.key.keysym.sym,tavern);
-					if (tavern->page == 2) tavern->item_manager.switchButton(ev.key.keysym.sym,tavern);
-				}
 				tavern->tavern_update(ren, ship);
+				tavern->manage_buttons(ev.type);
 			}
 			if (current_level == ADVENTURE) {
 				if (tavern != nullptr) {

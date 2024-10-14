@@ -5,22 +5,19 @@
 #include"Button.h"
 #include"Button_manager.h"
 #include"Ship&Sailor.h"
-class Tavern {
+class Tavern:Level {
 public:
 	Sprite* pikcha;
 	Button* gtta,*inv;
 	Button* gold;
 	Text* tgold;
 	Button* page1, * page2;
-	ButtonManager manager;
-	ButtonManager item_manager;
 	std::vector<Sailor> freaks;
 	std::vector<Item*> itemss;
 	std::vector<Button> button_freaks;
 	int current_button = 0;
 	int page = 1;
 	Tavern(SDL_Renderer* ren, Ship& ship, int page) {
-		manager.add_parent(this);
 			pikcha = new Sprite("textures/zal.png", ren, 400, 50, 960, 540);
 			gold = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "Gold: ", 36, { 1550,200,500,100 }, "textures/active_fon.png");
 			gtta = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "go to the adventure", 36, { 1450,100,500,100 }, "textures/active_fon.png");
@@ -88,22 +85,22 @@ public:
 			q.push_back(page1);
 			//q.push_back(page2);
 			iq.push_back(page2);
-			manager.addButtonRow(w);
-			if (e.size() > 0)manager.addButtonRow(e);
-			manager.addButtonRow(q);
-			manager.buttons[0][0]->is_active = true;
-			item_manager.buttons.push_back(iw);
-			item_manager.buttons.push_back(iq);
+			addButtonRow(w);
+			if (e.size() > 0)addButtonRow(e);
+			addButtonRow(q);
+			//buttons[0][0]->is_active = true;
+			buttons.push_back(iw);
+			buttons.push_back(iq);
 	}
 	void tavern_update(SDL_Renderer* ren, Ship& ship) {
 
 		if (page == 1) {
 
 
-			for (int i = 0; i < manager.buttons.size(); i++) {
+			for (int i = 0; i < buttons.size(); i++) {
 
-				for (int j = 0; j < manager.buttons[i].size(); j++) {
-					manager.buttons[i][j]->update(ren);
+				for (int j = 0; j < buttons[i].size(); j++) {
+					buttons[i][j]->update(ren);
 				}
 
 			}
@@ -127,14 +124,20 @@ public:
 				it.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, s.c_str(), 36, { 100,100,500,100 }, "textures/active_fon.png"));
 			}
 			*/
-			for (int i = 0; i < item_manager.buttons.size(); i++) {
+			for (int i = 0; i < buttons.size(); i++) {
 
-				for (int j = 0; j < item_manager.buttons[i].size(); j++) {
-					item_manager.buttons[i][j]->update(ren);
+				for (int j = 0; j < buttons[i].size(); j++) {
+					buttons[i][j]->update(ren);
 				}
 
 			}
 		}
 	}
-	
+	void manage_buttons(size_t type) {
+		if (type == SDL_MOUSEBUTTONDOWN) {
+			if (buttons[currentrow][currentbutton]->get_text() == "go to the adventure") {
+				current_level = ADVENTURE;
+			}
+		}
+	}
 };
