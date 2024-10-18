@@ -114,7 +114,7 @@ public:
 	void tavern_update(SDL_Renderer* ren, Ship& ship) {
 
 		if (page == 1) {
-
+			Level::manageButton();
 		
 				for (int i = 0; i < buttons.size(); i++) {
 
@@ -156,19 +156,27 @@ public:
 		}
 	}
 	void manage_buttons(size_t type) {
-		if(page == 1)Level::manageButton();
+		if(page == 1)Level::manageButton(); // короче да, координаты текущей кнопки надо обновлять при переходе на новую страницу
 		if(page == 2)Tavern::manageButton();
 		if (type == SDL_MOUSEBUTTONDOWN && currentrow != -1 && currentbutton != -1) {
-			if (buttons[currentrow][currentbutton]->get_text() == "go to the adventure") {
-				current_level = ADVENTURE;
-			}
-			if (buttons[currentrow][currentbutton]->get_text() == "next") {
-				page = 2;
-				return;
+			if (page == 1) {
+				if (buttons[currentrow][currentbutton]->get_text() == "go to the adventure") { //бля ахахах так тут же на второй странице проверка массива первой ахахах
+					current_level = ADVENTURE;
+				}
+				if (buttons[currentrow][currentbutton]->get_text() == "next") {
+					page = 2;
+					return;
+				}
+				if (buttons[currentrow][currentbutton]->get_text() == "INVENTORY") {
+					current_level = INVENTORY;
+					return;
+				}
 			}
 			if (page == 2) {
 				if (itbuttons[currentrow][currentbutton]->get_text() == "back") {
 					page = 1;
+					currentrow = -1;
+					currentbutton = -1; 
 					return;
 				}
 				if (ship.crew.size() < ship.crewsize) {

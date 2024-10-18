@@ -93,13 +93,10 @@ int main(int argc, char* argv[]) {
 			}
 			if (current_level == INVENTORY) {
 				if (inventory == nullptr) {
-					inventory = new Inventory(ren, ship);
-				}
-				
-				if (ev.type == SDL_KEYDOWN) {
-					inventory->manager.switchButton(ev.key.keysym.sym,inventory);
+					inventory = new Inventory(ren, ship,TAVERN);
 				}
 				inventory->update(ren, ship);
+				inventory->manage_buttons(ev.type);
 			}
 			if (ev.type == SDL_QUIT) {
 				goto mark1;

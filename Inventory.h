@@ -1,7 +1,8 @@
 #pragma once
 #include"Ship&Sailor.h"
-#include"Button_manager.h"
-class Inventory {
+//#include"Button_manager.h"
+#include"Level.h"
+class Inventory:Level {
 protected:
 	
 	Button* gold,*page1,*page2,*go_back;
@@ -10,8 +11,9 @@ protected:
 public:
 	int page;
 	friend class Ship;
-	ButtonManager manager;
-	Inventory(SDL_Renderer* ren, Ship& ship) {
+	//ButtonManager manager;
+	Inventory(SDL_Renderer* ren, Ship& ship,int prev) {
+		previous_level = prev;
 		gold = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "Gold: ", 36, { 1550,200,500,100 }, "textures/active_fon.png");
 		page1 = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "1", 72, { 980,940,500,100 }, "textures/active_fon.png");
 		page2 = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "2", 72, { 1080,940,500,100 }, "textures/active_fon.png");
@@ -53,24 +55,32 @@ public:
 			}
 			
 		}
-		manager.addButtonRow(w);
-		if (e.size() > 0) manager.addButtonRow(e);
+		addButtonRow(w);
+		if (e.size() > 0) addButtonRow(e);
 		q.push_back(gold);
 		q.push_back(page1);
 		q.push_back(page2);
 		q.push_back(go_back);
-		manager.addButtonRow(q);
-		manager.buttons[0][0]->is_active = true;
+		addButtonRow(q);
 	}
 	void update(SDL_Renderer* ren,Ship& ship) {
-		for (int i = 0; i < manager.buttons.size(); i++) {
+		for (int i = 0; i < buttons.size(); i++) {
 
-			for (int j = 0; j < manager.buttons[i].size(); j++) {
-				manager.buttons[i][j]->update(ren);
+			for (int j = 0; j < buttons[i].size(); j++) {
+				buttons[i][j]->update(ren);
 			}
 
 		}
 		tgold->RenderTexture(ren);
+	}
+	void manage_buttons(size_t type) {
+		Level::manageButton();
+		if (type == SDL_MOUSEBUTTONDOWN && currentrow!= -1 && currentbutton!= -1) {
+			if (buttons[currentrow][currentbutton]->get_text() == "Go back") {
+				current_level = previous_level;
+				return;
+			}
+		}
 	}
 };
 /*
