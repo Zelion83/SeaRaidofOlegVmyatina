@@ -79,7 +79,7 @@ int main(int argc, char* argv[]) {
 					delete menu; menu = nullptr;
 				}
 				if (inventory != nullptr) {
-					delete inventory; inventory = nullptr;
+					//delete inventory; inventory = nullptr;
 				}
 				if(tavern == nullptr) tavern = new Tavern(ren,ship,1);
 				tavern->tavern_update(ren, ship);
@@ -96,7 +96,7 @@ int main(int argc, char* argv[]) {
 					inventory = new Inventory(ren, ship,TAVERN);
 				}
 				inventory->update(ren, ship);
-				inventory->manage_buttons(ev.type);
+				inventory->manage_buttons(ev.type,ship);
 			}
 			if (ev.type == SDL_QUIT) {
 				goto mark1;

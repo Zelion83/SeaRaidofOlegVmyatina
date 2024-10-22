@@ -11,7 +11,7 @@ public:
 	Sprite* pikcha;
 	Button* gtta,*inv;
 	Button* gold;
-	Text* tgold;
+	Text* tgold,*texts;
 	Button* page1, * page2;
 	std::vector<Sailor> freaks;
 	std::vector<Item*> itemss;
@@ -22,6 +22,7 @@ public:
 	Tavern(SDL_Renderer* ren, Ship& ship, int page) {
 			pikcha = new Sprite("textures/zal.png", ren, 400, 50, 960, 540);
 			gold = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "Gold: ", 36, { 1550,200,500,100 }, "textures/active_fon.png");
+			texts = new Text("font/OpenSans-Light.ttf", 36, "Gold:", ren, { 1550,200,500,100 });
 			gtta = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "go to the adventure", 36, { 1450,100,500,100 }, "textures/active_fon.png");
 			inv = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "INVENTORY", 36, { 1450,350,500,100 }, "textures/active_fon.png");
 			page1 = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "next", 36, { 1650,550,500,100 }, "textures/active_fon.png");
@@ -42,7 +43,7 @@ public:
 				Item* item = items[genious_random(0, items.size()-1)];
 				itemss.push_back(item);
 			}
-			for (int i = 0; i < chislo + 1; i++) {
+			for (int i = 0; i < 3;/*chislo + 1;*/ i++) {
 				int mname = genious_random(0, names.size() - 1);
 				int msurname = genious_random(0, surnames.size() - 1);
 				Sailor freak;
@@ -51,7 +52,7 @@ public:
 				freaks.push_back(freak);
 			}
 			
-			for (int i = 0; i < chislo + 1; i++) {
+			for (int i = 0; i < 3;/* chislo + 1;*/ i++) {
 				std::string mtext = freaks[i].name + "	" + "hp: " + std::to_string(freaks[i].hp) + "	dmg: " + std::to_string(freaks[i].dmg)
 					+ " price: " + std::to_string(freaks[i].price);
 				int y = 590 + i * 100;
@@ -82,9 +83,11 @@ public:
 				}
 			}
 			std::vector<Button*> q;
+
 			q.push_back(gtta);
 			q.push_back(inv);
 			q.push_back(page1);
+
 			//q.push_back(page2);
 			iq.push_back(page2);
 			addButtonRow(w);
@@ -92,6 +95,7 @@ public:
 			addButtonRow(q);
 			//buttons[0][0]->is_active = true;
 			itbuttons.push_back(iw);
+			itbuttons.push_back(ie);
 			itbuttons.push_back(iq);
 	}
 	virtual void manageButton() {
@@ -126,26 +130,12 @@ public:
 		
 			pikcha->update(ren);
 			gold->update(ren);
-			std::stringstream ss;
-			ss << ship.get_gold();
-			std::string s;
-			ss >> s;
-			tgold->rename(s.c_str(), ren);
-			tgold->RenderTexture(ren);
+			tgold->rename(std::to_string(ship.get_gold()).c_str(), ren);
+			tgold->RenderTexture(ren);;
 		}
 		if (page == 2) {
 			Tavern::manageButton();
-			/*
-			std::vector<Button*> it;
-			for (int i = 0; i < item_manager.buttons.size(); ++i) {
-				std::stringstream ss;
-				ss << items[i]->price;
-				std::string s = items[i]->name + items[i]->opisanie;
-				ss >> s;
-				it.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, s.c_str(), 36, { 100,100,500,100 }, "textures/active_fon.png"));
-			}
-			*/
-			
+			texts->render(ren);
 			for (int i = 0; i < itbuttons.size(); i++) {
 
 				for (int j = 0; j < itbuttons[i].size(); j++) {
@@ -153,14 +143,16 @@ public:
 				}
 
 			}
+			tgold->rename(std::to_string(ship.get_gold()).c_str(), ren);
+			tgold->RenderTexture(ren);
 		}
 	}
 	void manage_buttons(size_t type) {
-		if(page == 1)Level::manageButton(); // короче да, координаты текущей кнопки надо обновлять при переходе на новую страницу
+		if(page == 1)Level::manageButton(); 
 		if(page == 2)Tavern::manageButton();
 		if (type == SDL_MOUSEBUTTONDOWN && currentrow != -1 && currentbutton != -1) {
 			if (page == 1) {
-				if (buttons[currentrow][currentbutton]->get_text() == "go to the adventure") { //бля ахахах так тут же на второй странице проверка массива первой ахахах
+				if (buttons[currentrow][currentbutton]->get_text() == "go to the adventure") { 
 					current_level = ADVENTURE;
 				}
 				if (buttons[currentrow][currentbutton]->get_text() == "next") {
@@ -171,31 +163,34 @@ public:
 					current_level = INVENTORY;
 					return;
 				}
+				if (ship.crew.size() < ship.crewsize) {
+					ship.push_string(buttons[currentrow][currentbutton]->get_text());
+					buttons[currentrow].erase(buttons[currentrow].begin() + currentbutton);
+
+					for (int j = currentbutton; j < buttons[currentrow].size(); j++) {
+						buttons[currentrow][j]->change_coord(0, -100);
+					}
+				}
 			}
 			if (page == 2) {
+				
 				if (itbuttons[currentrow][currentbutton]->get_text() == "back") {
 					page = 1;
 					currentrow = -1;
 					currentbutton = -1; 
 					return;
 				}
-				if (ship.crew.size() < ship.crewsize) {
+				if (ship.inventory.size() < 10) {
 					ship.add_item(itbuttons[currentrow][currentbutton]->get_text());
 					itbuttons[currentrow].erase(itbuttons[currentrow].begin() + currentbutton);
+					
 
 					for (int j = currentbutton; j < itbuttons[currentrow].size(); j++) {
 						itbuttons[currentrow][j]->change_coord(0, -100);
 					}
 				}
 			}
-			if (ship.crew.size() < ship.crewsize) {
-				ship.push_string(buttons[currentrow][currentbutton]->get_text());
-				buttons[currentrow].erase(buttons[currentrow].begin() + currentbutton);
-
-				for (int j = currentbutton; j < buttons[currentrow].size(); j++) {
-					buttons[currentrow][j]->change_coord(0, -100);
-				}
-			}
+			
 		}
 	}
 };

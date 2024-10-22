@@ -57,6 +57,7 @@ protected:
 public:
 	friend class ButtonManager;
 	friend class Inventory;
+	//std::vector<Item*> inventory;
 	friend class Tavern;
 	Ship(int size, int gold) {
 		crewsize = size;
@@ -92,25 +93,38 @@ public:
 		}
 	};
 //std::string mtext = itemss[i]->name + " :	" + itemss[i]->opisanie + " price: " + std::to_string(itemss[i]->price);
-	auto decode(std::string s) {
+	auto decode(std::string s) { //ÂÎÒ ÇÄÅÑÜ İÒÎ ÈÑÊËŞ×ÅÍÈÅ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		std::stringstream ss(s);
 		std::string opisanie, name,musor1,musor2;
 		int price = 0;
-		ss << name << musor1 << opisanie << musor2 << price;
+		printf("%s \n", s.c_str());
+
+		ss >> name >> musor1 >> opisanie >> musor2 >> price;
+		name.pop_back();
+		printf("%s\n", name.c_str());
 		//Item* itemm = new Item(name.c_str(), opisanie.c_str(), "textures/cat.png", price, ren);
 		for (int i = 0; i < items.size(); ++i) {
 			if (items[i]->get_name() == name) {
+				gold -= items[i]->price;
 				return items[i];
 			}
 		}
 		int index = 0;
+		Item* none = new Item("None", "None", "None", 0, ren);
+		return none;
+
 		//auto it = std::find(items.begin(), items.end(), itemm);
 		//return *it;
 	}
 	void add_item(std::string s) {
 		inventory.push_back(decode(s));
 	}
-
+	std::string get_item_string(int i) {
+		if (i < inventory.size()) {
+			std::string mtext = inventory[i]->name;// +":	" + inventory[i]->opisanie + " price: " + std::to_string(inventory[i]->price);
+			return mtext;
+		}
+	}
 	/*
 	Ship operator+(Sailor& sailor) {
 		crew.push_back(sailor);

@@ -8,7 +8,7 @@
 //класс текст : строка, шрифт, поверхность->текстура, размер, цвет, рендер, координаты, изменение этого всего, в конструкторе инициализация
 class Text {
 protected:
-	std::string text, path;
+	std::wstring text, path;
 	TTF_Font* font;
 	SDL_Surface* surface;
 	SDL_Texture* texture;
@@ -18,25 +18,25 @@ protected:
 public:
 	friend class Button;
 	Text() {
-		text = "";
-		path = "";
+		text = L"";
+		path = L"";
 		font = nullptr;
 		surface = nullptr;
 		texture = nullptr;
 	}
-	Text(const char* nyTb, int number, const char* tx, SDL_Renderer* ren, SDL_Rect rect) { 
+	Text(const char* nyTb, int number, const wchar_t* tx, SDL_Renderer* ren, SDL_Rect rect) { 
 		x = rect.x; y = rect.y; w = rect.w; h = rect.h;
 		size = number;
 		text = tx;
 		font = TTF_OpenFont(nyTb, size);
-		surface = TTF_RenderUTF8_Solid(font, text.c_str(), color);
+		surface = TTF_RenderUTF8_Solid(font, (const char*)text.c_str(), color);
 		texture = SDL_CreateTextureFromSurface(ren, surface);
-		TTF_SizeText(font, text.c_str(), &w, &h);
+		TTF_SizeText(font, (const char*)text.c_str(), &w, &h);
 	}
-	void rename(const char* newname, SDL_Renderer* ren) {
+	void rename(const wchar_t* newname, SDL_Renderer* ren) {
 		text = newname;
 		SDL_FreeSurface(surface);
-		surface = TTF_RenderUTF8_Solid(font, text.c_str(), color);
+		surface = TTF_RenderUTF8_Solid(font, (const char*)text.c_str(), color);
 		SDL_DestroyTexture(texture);
 		texture = SDL_CreateTextureFromSurface(ren, surface);
 	}
@@ -66,8 +66,8 @@ public:
 		y = other.y;
 		w = other.w;
 		h = other.h;
-		font = TTF_OpenFont(other.path.c_str(), size);
-		surface = TTF_RenderUTF8_Solid(font, text.c_str(), color);
+		font = TTF_OpenFont((const char*)other.path.c_str(), size);
+		surface = TTF_RenderUTF8_Solid(font, (const char*) text.c_str(), color);
 		texture = SDL_CreateTextureFromSurface(nullptr, surface);
 	}
 
@@ -84,8 +84,8 @@ public:
 			y = other.y;
 			w = other.w;
 			h = other.h;
-			font = TTF_OpenFont(other.path.c_str(), size);
-			surface = TTF_RenderUTF8_Solid(font, text.c_str(), color);
+			font = TTF_OpenFont((const char*)other.path.c_str(), size);
+			surface = TTF_RenderUTF8_Solid(font, (const char*)text.c_str(), color);
 			texture = SDL_CreateTextureFromSurface(nullptr, surface);
 		}
 		return *this;

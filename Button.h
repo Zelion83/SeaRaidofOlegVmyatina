@@ -24,7 +24,7 @@ public:
 		text.size = 48;
 		text.color = { 255,255,255 };
 	}
-	Button(const char* qpath, const char* mfontpath, SDL_Renderer* ren, const char* mtext, int mrazmer, SDL_Rect rect,const char* newpath) {
+	Button(const char* qpath, const char* mfontpath, SDL_Renderer* ren, const wchar_t* mtext, int mrazmer, SDL_Rect rect,const char* newpath) {
 		path = qpath;
 		if (texture != nullptr) SDL_DestroyTexture(texture);
 		if (text.font != nullptr) TTF_CloseFont(text.font);
@@ -52,7 +52,7 @@ public:
 		TTF_SizeText(text.font, text.text.c_str(), &text.w, &text.h);
 		w = text.w;
 		h = text.h;
-		text.surface = TTF_RenderUTF8_Solid(text.font, text.text.c_str(), text.color);
+		text.surface = TTF_RenderUNICODE_Solid(text.font, (Uint16*)text.text.c_str(), text.color); //TTF_RenderUTF8_Solid(text.font, text.text.c_str(), text.color);
 		text.texture = SDL_CreateTextureFromSurface(ren, text.surface);
 	}
 	SDL_Rect* get_coord() {
@@ -135,6 +135,7 @@ public:
 	Button(const Button& other) : Sprite(other) {
 		text.color = { 255,255,255 };
 		text.font = TTF_OpenFont(other.text.path.c_str(), text.size);
+		
 		text.surface = TTF_RenderUTF8_Solid(text.font, other.text.text.c_str(), other.text.color);
 		text.texture = SDL_CreateTextureFromSurface(nullptr, text.surface);
 		newtexture = other.texture;

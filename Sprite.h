@@ -38,7 +38,7 @@ std:: vector<std::string>items {
 std::vector<Item*> items{
 	new Item("Cat","Gain a +10 crewmorale","textures/cat1.png",10,ren),
 	new Item("Monkey","Gain a +20 crewmorale","textures/cat1.png",10,ren),
-	new Item("Big Cannons","Gain a +15 ship power","textures/cat1.png",10,ren)
+	new Item("BigCannons","Gain a +15 ship power","textures/cat1.png",10,ren)
 };
 short current_level = MAIN_MENU; 
 

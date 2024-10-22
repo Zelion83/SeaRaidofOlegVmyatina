@@ -14,15 +14,15 @@ public:
 			std::vector<Button*> q;
 			SDL_Rect rect = { 550,200,500,100 };
 
-			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "new game", 72, rect, "textures/active_fon.png"));
+			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"новая игра", 72, rect, "textures/active_fon.png"));
 			rect.y += 150;
-			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "load game", 72, rect, "textures/active_fon.png"));
+			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"load game", 72, rect, "textures/active_fon.png"));
 			rect.y += 150;
-			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "settings", 72, rect, "textures/active_fon.png"));
+			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"settings", 72, rect, "textures/active_fon.png"));
 			rect.y += 150;
-			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "about author", 72, rect, "textures/active_fon.png"));
+			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"about author", 72, rect, "textures/active_fon.png"));
 			rect.y += 150;
-			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "exit", 72, rect, "textures/active_fon.png"));
+			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"exit", 72, rect, "textures/active_fon.png"));
 			addButtonRow(q);
 			//manager.buttons[0][0]->is_active = true;
 			//manager.active = true;

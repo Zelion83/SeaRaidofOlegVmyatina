@@ -134,6 +134,7 @@
     <ClInclude Include="Button_manager.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Ship&amp;Sailor.h" />
     <ClInclude Include="Sprite.h" />

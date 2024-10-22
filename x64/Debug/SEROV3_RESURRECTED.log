@@ -1,21 +1,353 @@
 ﻿  main.cpp
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(73,14): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(74,14): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(75,13): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(76,13): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(66,10): warning C4244: return: преобразование "unsigned __int64" в "int", возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(41,46): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(43,52): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(47,48): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(48,54): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button_manager.h(42,60): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\main.cpp(69,20): message : выполняется компиляция ссылки на экземпляр шаблон функции "void ButtonManager::switchButton<Menu>(SDL_Keycode,T *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Item.h(28,10): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(15,3): error C2440: return: невозможно преобразовать "std::wstring" в "std::basic_string<char,std::char_traits<char>,std::allocator<char>>"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(15,3): message : Для выполнения данного преобразования нет доступного оператора преобразования, определенного пользователем, или вызов оператора невозможен
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(23,7): error C2679: бинарный "=": не найден оператор, принимающий правый операнд типа "const char [1]" (или приемлемое преобразование отсутствует)
+G:\visual_studio\VC\Tools\MSVC\14.37.32822\include\xstring(3211,32): message : может быть "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>> &std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>::operator =(const _Elem)"
           with
           [
-              T=Menu
+              _Elem=wchar_t
           ]
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button_manager.h(57,78): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button_manager.h(81,34): error C2039: "item_manager": не является членом "Menu".
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Menu.h(6,7): message : см. объявление "Menu"
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button_manager.h(81,34): error C2039: "item_manager": не является членом "Inventory".
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(4,7): message : см. объявление "Inventory"
+G:\visual_studio\VC\Tools\MSVC\14.37.32822\include\xstring(3203,32): message : или       "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>> &std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>::operator =(const _Elem *const )"
+          with
+          [
+              _Elem=wchar_t
+          ]
+G:\visual_studio\VC\Tools\MSVC\14.37.32822\include\xstring(3155,32): message : или       "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>> &std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>::operator =(const std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>> &)"
+G:\visual_studio\VC\Tools\MSVC\14.37.32822\include\xstring(3081,32): message : или       "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>> &std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>::operator =(std::initializer_list<_Elem>)"
+          with
+          [
+              _Elem=wchar_t
+          ]
+G:\visual_studio\VC\Tools\MSVC\14.37.32822\include\xstring(2959,32): message : или       "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>> &std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>::operator =(std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>> &&) noexcept(<expr>)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(23,7): message : при попытке сопоставить список аргументов "(std::wstring, const char [1])"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(50,7): error C2679: бинарный "=": не найден оператор, принимающий правый операнд типа "const char *" (или приемлемое преобразование отсутствует)
+G:\visual_studio\VC\Tools\MSVC\14.37.32822\include\xstring(3211,32): message : может быть "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>> &std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>::operator =(const _Elem)"
+          with
+          [
+              _Elem=wchar_t
+          ]
+G:\visual_studio\VC\Tools\MSVC\14.37.32822\include\xstring(3203,32): message : или       "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>> &std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>::operator =(const _Elem *const )"
+          with
+          [
+              _Elem=wchar_t
+          ]
+G:\visual_studio\VC\Tools\MSVC\14.37.32822\include\xstring(3155,32): message : или       "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>> &std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>::operator =(const std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>> &)"
+G:\visual_studio\VC\Tools\MSVC\14.37.32822\include\xstring(3081,32): message : или       "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>> &std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>::operator =(std::initializer_list<_Elem>)"
+          with
+          [
+              _Elem=wchar_t
+          ]
+G:\visual_studio\VC\Tools\MSVC\14.37.32822\include\xstring(2959,32): message : или       "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>> &std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>::operator =(std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>> &&) noexcept(<expr>)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(50,7): message : при попытке сопоставить список аргументов "(std::wstring, const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(51,15): error C2664: "TTF_Font *TTF_OpenFont(const char *,int)": невозможно преобразовать аргумент 1 из "const _Elem *" в "const char *"
+          with
+          [
+              _Elem=wchar_t
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(51,43): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\packages\sdl2_ttf.nuget.2.22.0\build\native\include\SDL_ttf.h(205,36): message : см. объявление "TTF_OpenFont"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(51,15): message : при попытке сопоставить список аргументов "(const _Elem *, int)"
+          with
+          [
+              _Elem=wchar_t
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(52,3): error C2664: "int TTF_SizeText(TTF_Font *,const char *,int *,int *)": невозможно преобразовать аргумент 2 из "const _Elem *" в "const char *"
+          with
+          [
+              _Elem=wchar_t
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(52,42): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\packages\sdl2_ttf.nuget.2.22.0\build\native\include\SDL_ttf.h(833,29): message : см. объявление "TTF_SizeText"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(52,3): message : при попытке сопоставить список аргументов "(TTF_Font *, const _Elem *, int *, int *)"
+          with
+          [
+              _Elem=wchar_t
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(97,14): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(98,14): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(99,13): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(100,13): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(121,19): error C2664: "SDL_Surface *TTF_RenderUTF8_Solid(TTF_Font *,const char *,SDL_Color)": невозможно преобразовать аргумент 2 из "const _Elem *" в "const char *"
+          with
+          [
+              _Elem=wchar_t
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(121,72): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\packages\sdl2_ttf.nuget.2.22.0\build\native\include\SDL_ttf.h(1025,39): message : см. объявление "TTF_RenderUTF8_Solid"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(121,19): message : при попытке сопоставить список аргументов "(TTF_Font *, const _Elem *, const SDL_Color)"
+          with
+          [
+              _Elem=wchar_t
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(137,15): error C2664: "TTF_Font *TTF_OpenFont(const char *,int)": невозможно преобразовать аргумент 1 из "const _Elem *" в "const char *"
+          with
+          [
+              _Elem=wchar_t
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(137,49): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\packages\sdl2_ttf.nuget.2.22.0\build\native\include\SDL_ttf.h(205,36): message : см. объявление "TTF_OpenFont"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(137,15): message : при попытке сопоставить список аргументов "(const _Elem *, int)"
+          with
+          [
+              _Elem=wchar_t
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(139,18): error C2664: "SDL_Surface *TTF_RenderUTF8_Solid(TTF_Font *,const char *,SDL_Color)": невозможно преобразовать аргумент 2 из "const _Elem *" в "const char *"
+          with
+          [
+              _Elem=wchar_t
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(139,71): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\packages\sdl2_ttf.nuget.2.22.0\build\native\include\SDL_ttf.h(1025,39): message : см. объявление "TTF_RenderUTF8_Solid"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(139,18): message : при попытке сопоставить список аргументов "(TTF_Font *, const _Elem *, const SDL_Color)"
+          with
+          [
+              _Elem=wchar_t
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(68,10): warning C4244: return: преобразование "unsigned __int64" в "int", возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(18,20): error C2665: "Button::Button": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(27,2): message : может быть "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(18,20): message : "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)": невозможно преобразовать аргумент 4 из "const char [7]" в "const wchar_t *"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(18,73): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(18,20): message : при попытке сопоставить список аргументов "(const char [17], const char [24], SDL_Renderer *, const char [7], int, initializer list, const char [24])"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(19,21): error C2665: "Button::Button": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(27,2): message : может быть "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(19,21): message : "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)": невозможно преобразовать аргумент 4 из "const char [2]" в "const wchar_t *"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(19,74): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(19,21): message : при попытке сопоставить список аргументов "(const char [17], const char [24], SDL_Renderer *, const char [2], int, initializer list, const char [24])"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(20,21): error C2665: "Button::Button": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(27,2): message : может быть "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(20,21): message : "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)": невозможно преобразовать аргумент 4 из "const char [2]" в "const wchar_t *"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(20,74): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(20,21): message : при попытке сопоставить список аргументов "(const char [17], const char [24], SDL_Renderer *, const char [2], int, initializer list, const char [24])"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(22,23): error C2665: "Button::Button": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(27,2): message : может быть "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(22,23): message : "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)": невозможно преобразовать аргумент 4 из "const char [8]" в "const wchar_t *"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(22,76): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(22,23): message : при попытке сопоставить список аргументов "(const char [17], const char [24], SDL_Renderer *, const char [8], int, initializer list, const char [24])"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(33,26): error C2665: "Text::Text": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Text.h(27,2): message : может быть "Text::Text(const char *,int,const wchar_t *,SDL_Renderer *,SDL_Rect)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(33,26): message : "Text::Text(const char *,int,const wchar_t *,SDL_Renderer *,SDL_Rect)": невозможно преобразовать аргумент 3 из "const _Elem *" в "const wchar_t *"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(33,65): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(33,26): message : при попытке сопоставить список аргументов "(const char [17], int, const _Elem *, SDL_Renderer *, initializer list)"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(34,26): error C2665: "Text::Text": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Text.h(27,2): message : может быть "Text::Text(const char *,int,const wchar_t *,SDL_Renderer *,SDL_Rect)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(34,26): message : "Text::Text(const char *,int,const wchar_t *,SDL_Renderer *,SDL_Rect)": невозможно преобразовать аргумент 3 из "const _Elem *" в "const wchar_t *"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(34,59): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(34,26): message : при попытке сопоставить список аргументов "(const char [17], int, const _Elem *, SDL_Renderer *, initializer list)"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(40,19): error C2665: "Text::Text": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Text.h(27,2): message : может быть "Text::Text(const char *,int,const wchar_t *,SDL_Renderer *,SDL_Rect)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(40,19): message : "Text::Text(const char *,int,const wchar_t *,SDL_Renderer *,SDL_Rect)": невозможно преобразовать аргумент 3 из "const _Elem *" в "const wchar_t *"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(40,58): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(40,19): message : при попытке сопоставить список аргументов "(const char [24], int, const _Elem *, SDL_Renderer *, initializer list)"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(54,27): error C2665: "Button::Button": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(27,2): message : может быть "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(54,27): message : "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)": невозможно преобразовать аргумент 4 из "const _Elem *" в "const wchar_t *"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(54,91): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(54,27): message : при попытке сопоставить список аргументов "(const char [17], const char [24], SDL_Renderer *, const _Elem *, int, initializer list, const char [24])"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(59,27): error C2665: "Button::Button": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(27,2): message : может быть "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(59,27): message : "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)": невозможно преобразовать аргумент 4 из "const _Elem *" в "const wchar_t *"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(59,91): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(59,27): message : при попытке сопоставить список аргументов "(const char [17], const char [24], SDL_Renderer *, const _Elem *, int, initializer list, const char [24])"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(74,28): error C2665: "Button::Button": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(27,2): message : может быть "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(74,28): message : "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)": невозможно преобразовать аргумент 4 из "const _Elem *" в "const wchar_t *"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(74,125): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(74,28): message : при попытке сопоставить список аргументов "(const char [17], const char [24], SDL_Renderer *, const _Elem *, int, initializer list, const char [24])"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(79,28): error C2665: "Button::Button": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(27,2): message : может быть "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(79,28): message : "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)": невозможно преобразовать аргумент 4 из "const _Elem *" в "const wchar_t *"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(79,125): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(79,28): message : при попытке сопоставить список аргументов "(const char [17], const char [24], SDL_Renderer *, const _Elem *, int, initializer list, const char [24])"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(109,8): error C2664: "void Text::rename(const wchar_t *,SDL_Renderer *)": невозможно преобразовать аргумент 1 из "const _Elem *" в "const wchar_t *"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(109,54): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Text.h(36,7): message : см. объявление "Text::rename"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(109,8): message : при попытке сопоставить список аргументов "(const _Elem *, SDL_Renderer *)"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(24,21): error C2665: "Button::Button": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(27,2): message : может быть "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(24,21): message : "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)": невозможно преобразовать аргумент 4 из "const char [7]" в "const wchar_t *"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(24,74): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(24,21): message : при попытке сопоставить список аргументов "(const char [17], const char [24], SDL_Renderer *, const char [7], int, initializer list, const char [24])"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(25,20): error C2665: "Text::Text": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Text.h(27,2): message : может быть "Text::Text(const char *,int,const wchar_t *,SDL_Renderer *,SDL_Rect)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(25,20): message : "Text::Text(const char *,int,const wchar_t *,SDL_Renderer *,SDL_Rect)": невозможно преобразовать аргумент 3 из "const char [6]" в "const wchar_t *"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(25,52): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(25,20): message : при попытке сопоставить список аргументов "(const char [24], int, const char [6], SDL_Renderer *, initializer list)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(26,21): error C2665: "Button::Button": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(27,2): message : может быть "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(26,21): message : "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)": невозможно преобразовать аргумент 4 из "const char [20]" в "const wchar_t *"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(26,74): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(26,21): message : при попытке сопоставить список аргументов "(const char [17], const char [24], SDL_Renderer *, const char [20], int, initializer list, const char [24])"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(27,20): error C2665: "Button::Button": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(27,2): message : может быть "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(27,20): message : "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)": невозможно преобразовать аргумент 4 из "const char [10]" в "const wchar_t *"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(27,73): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(27,20): message : при попытке сопоставить список аргументов "(const char [17], const char [24], SDL_Renderer *, const char [10], int, initializer list, const char [24])"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(28,22): error C2665: "Button::Button": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(27,2): message : может быть "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(28,22): message : "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)": невозможно преобразовать аргумент 4 из "const char [5]" в "const wchar_t *"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(28,75): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(28,22): message : при попытке сопоставить список аргументов "(const char [17], const char [24], SDL_Renderer *, const char [5], int, initializer list, const char [24])"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(29,22): error C2665: "Button::Button": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(27,2): message : может быть "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(29,22): message : "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)": невозможно преобразовать аргумент 4 из "const char [5]" в "const wchar_t *"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(29,75): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(29,22): message : при попытке сопоставить список аргументов "(const char [17], const char [24], SDL_Renderer *, const char [5], int, initializer list, const char [24])"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(34,20): error C2665: "Text::Text": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Text.h(27,2): message : может быть "Text::Text(const char *,int,const wchar_t *,SDL_Renderer *,SDL_Rect)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(34,20): message : "Text::Text(const char *,int,const wchar_t *,SDL_Renderer *,SDL_Rect)": невозможно преобразовать аргумент 3 из "const _Elem *" в "const wchar_t *"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(34,59): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(34,20): message : при попытке сопоставить список аргументов "(const char [24], int, const _Elem *, SDL_Renderer *, initializer list)"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(41,48): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(43,54): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(47,48): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(48,54): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(61,28): error C2665: "Button::Button": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(27,2): message : может быть "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(61,28): message : "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)": невозможно преобразовать аргумент 4 из "const _Elem *" в "const wchar_t *"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(61,92): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(61,28): message : при попытке сопоставить список аргументов "(const char [17], const char [24], SDL_Renderer *, const _Elem *, int, initializer list, const char [24])"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(66,28): error C2665: "Button::Button": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(27,2): message : может быть "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(66,28): message : "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)": невозможно преобразовать аргумент 4 из "const _Elem *" в "const wchar_t *"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(66,92): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(66,28): message : при попытке сопоставить список аргументов "(const char [17], const char [24], SDL_Renderer *, const _Elem *, int, initializer list, const char [24])"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(77,29): error C2665: "Button::Button": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(27,2): message : может быть "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(77,29): message : "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)": невозможно преобразовать аргумент 4 из "const _Elem *" в "const wchar_t *"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(77,93): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(77,29): message : при попытке сопоставить список аргументов "(const char [17], const char [24], SDL_Renderer *, const _Elem *, int, initializer list, const char [24])"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(82,29): error C2665: "Button::Button": ни одна перегруженная функция не может преобразовать все типы аргументов
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(27,2): message : может быть "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(82,29): message : "Button::Button(const char *,const char *,SDL_Renderer *,const wchar_t *,int,SDL_Rect,const char *)": невозможно преобразовать аргумент 4 из "const _Elem *" в "const wchar_t *"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(82,93): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(82,29): message : при попытке сопоставить список аргументов "(const char [17], const char [24], SDL_Renderer *, const _Elem *, int, initializer list, const char [24])"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(133,9): error C2664: "void Text::rename(const wchar_t *,SDL_Renderer *)": невозможно преобразовать аргумент 1 из "const _Elem *" в "const wchar_t *"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(133,55): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Text.h(36,7): message : см. объявление "Text::rename"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(133,9): message : при попытке сопоставить список аргументов "(const _Elem *, SDL_Renderer *)"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(146,9): error C2664: "void Text::rename(const wchar_t *,SDL_Renderer *)": невозможно преобразовать аргумент 1 из "const _Elem *" в "const wchar_t *"
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(146,55): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции в круглых скобках
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Text.h(36,7): message : см. объявление "Text::rename"
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(146,9): message : при попытке сопоставить список аргументов "(const _Elem *, SDL_Renderer *)"
+          with
+          [
+              _Elem=char
+          ]
