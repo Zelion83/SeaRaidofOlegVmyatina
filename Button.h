@@ -11,7 +11,7 @@ public:
 	bool is_active = false;
 	bool is_clicked = false;
 	SDL_Texture* newtexture = nullptr;
-	std::string get_text() {
+	std::wstring get_text() {
 		return text.text;
 	}
 	Button() {
@@ -49,7 +49,8 @@ public:
 		text.size = mrazmer;
 		text.path = mfontpath;
 		text.font = TTF_OpenFont(text.path.c_str(), text.size);
-		TTF_SizeText(text.font, text.text.c_str(), &text.w, &text.h);
+		//TTF_SizeText(text.font, (const char*)text.text.c_str(), &text.w, &text.h);
+		TTF_SizeUNICODE(text.font, (Uint16*)text.text.c_str(), &text.w, &text.h);
 		w = text.w;
 		h = text.h;
 		text.surface = TTF_RenderUNICODE_Solid(text.font, (Uint16*)text.text.c_str(), text.color); //TTF_RenderUTF8_Solid(text.font, text.text.c_str(), text.color);
@@ -118,7 +119,7 @@ public:
 			TTF_CloseFont(text.font);
 			text.font = other.text.font;
 			SDL_FreeSurface(text.surface);
-			text.surface = TTF_RenderUTF8_Solid(text.font, other.text.text.c_str(), other.text.color);
+			text.surface = TTF_RenderUNICODE_Solid(text.font, (Uint16*)other.text.text.c_str(), other.text.color);
 			SDL_DestroyTexture(text.texture);
 			SDL_DestroyTexture(texture);
 			SDL_DestroyTexture(newtexture);
@@ -136,7 +137,7 @@ public:
 		text.color = { 255,255,255 };
 		text.font = TTF_OpenFont(other.text.path.c_str(), text.size);
 		
-		text.surface = TTF_RenderUTF8_Solid(text.font, other.text.text.c_str(), other.text.color);
+		text.surface = TTF_RenderUNICODE_Solid(text.font, (Uint16*)other.text.text.c_str(), other.text.color);
 		text.texture = SDL_CreateTextureFromSurface(nullptr, text.surface);
 		newtexture = other.texture;
 		text.text = other.text.text;

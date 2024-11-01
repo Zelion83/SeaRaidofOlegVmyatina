@@ -6,13 +6,14 @@
 #include"Button.h"
 #include"Text.h"
 //#include"Inventory.h"
+
 class Sailor {
 public:
 	int hp = 0;
 	int dmg = 0;
 	int sila = (hp + dmg) / 2;
 	int price = sila;
-	std::string name;
+	std::wstring name;
 	Sailor() {
 
 		hp = genious_random(0, 100);
@@ -38,7 +39,7 @@ public:
 		price = sailor.price;
 		name = sailor.name;
 	}
-	Sailor(int hp, int dmg, int price, const char* name) {
+	Sailor(int hp, int dmg, int price, const wchar_t* name) {
 		this->hp = hp;
 		this->dmg = dmg;
 		sila = (hp + dmg) / 2;
@@ -76,12 +77,12 @@ public:
 			power += crew[i].sila;
 		}
 	}
-	void push_string(std::string s) {
+	void push_string(std::wstring s) {
 		if (crew.size() < crewsize) {
-			std::stringstream ss(s);
+			std::wstringstream ss(s);
 			Sailor freak;
-			std::string name;
-			std::string musor, musor1, musor2;
+			std::wstring name;
+			std::wstring musor, musor1, musor2;
 			ss >> name;
 			freak.name = name;
 			ss >> name;
@@ -93,9 +94,9 @@ public:
 		}
 	};
 //std::string mtext = itemss[i]->name + " :	" + itemss[i]->opisanie + " price: " + std::to_string(itemss[i]->price);
-	auto decode(std::string s) { //ÂÎÒ ÇÄÅÑÜ İÒÎ ÈÑÊËŞ×ÅÍÈÅ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		std::stringstream ss(s);
-		std::string opisanie, name,musor1,musor2;
+	auto decode(std::wstring s) { //ÂÎÒ ÇÄÅÑÜ İÒÎ ÈÑÊËŞ×ÅÍÈÅ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		std::wstringstream ss(s);
+		std::wstring opisanie, name,musor1,musor2;
 		int price = 0;
 		printf("%s \n", s.c_str());
 
@@ -110,18 +111,18 @@ public:
 			}
 		}
 		int index = 0;
-		Item* none = new Item("None", "None", "None", 0, ren);
+		Item* none = new Item(L"None", L"None", "None", 0, ren);
 		return none;
 
 		//auto it = std::find(items.begin(), items.end(), itemm);
 		//return *it;
 	}
-	void add_item(std::string s) {
+	void add_item(std::wstring s) {
 		inventory.push_back(decode(s));
 	}
-	std::string get_item_string(int i) {
+	std::wstring get_item_string(int i) {
 		if (i < inventory.size()) {
-			std::string mtext = inventory[i]->name;// +":	" + inventory[i]->opisanie + " price: " + std::to_string(inventory[i]->price);
+			std::wstring mtext = inventory[i]->name;// +":	" + inventory[i]->opisanie + " price: " + std::to_string(inventory[i]->price);
 			return mtext;
 		}
 	}

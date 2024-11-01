@@ -1,3 +1,4 @@
+/*
 #pragma once
 #include"Button.h"
 #include"Ship&Sailor.h"
@@ -131,3 +132,4 @@ public:
 
     
 };
+*/

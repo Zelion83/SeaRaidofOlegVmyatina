@@ -23,6 +23,7 @@ enum events {
 	MAP,
 	REBELLION
 };
+
 /*
 std:: vector<std::string>items {
 	"CAT",
@@ -32,44 +33,42 @@ std:: vector<std::string>items {
 	"MEGA_SABRE",
 	"SUPPLY",
 	"BOOK_OF_LEGENDS",
-	"MEDECINE_CHEST"
+	"MEDICINE_CHEST"
 };
 */
 std::vector<Item*> items{
-	new Item("Cat","Gain a +10 crewmorale","textures/cat1.png",10,ren),
-	new Item("Monkey","Gain a +20 crewmorale","textures/cat1.png",10,ren),
-	new Item("BigCannons","Gain a +15 ship power","textures/cat1.png",10,ren)
+	new Item(L"Кот",L"+10 к боевому духу","textures/cat1.png",10,ren),
+	new Item(L"Обезьяна",L"+20 к боевому духу","textures/cat1.png",10,ren),
+	new Item(L"Пушки",L"+15 к мощи корабля","textures/cat1.png",10,ren)
 };
 short current_level = MAIN_MENU; 
 
-std::vector<std::string> names{ //= new std::vector<std::string>{
-	"Oliver",
-	 "Jack",
-	 "Harry",
-	 "Jacob",
-	 "Charley",
-	 "Thomas",
-	 "George",
-	 "Oscar",
-	 "James",
-	 "William" 
+std::vector<std::wstring> names{ //= new std::vector<std::string>{
+	 L"Оливер",
+	 L"Джек",
+	 L"Гарри",
+	 L"Иаков",
+	 L"Чарли",
+	 L"Томас",
+	 L"Георг",
+	 L"Оскар",
+	 L"Джеймс",
+	 L"Вильям" 
 };
-std::vector<std::string> surnames{ //= new std::vector<std::string>{
-	"Williams",
-	"Peters",
-	"Gibson",
-	"Martin",
-	"Jordan",
-	"Jackson",
-	"Grant",
-	"Davis",
-	"Collins",
-	"Bradley",
-	"Barlow"
+std::vector<std::wstring> surnames{ //= new std::vector<std::string>{
+	L"Вильямс",
+	L"Питерс",
+	L"Гибсон",
+	L"Мартин",
+	L"Джордан",
+	L"Джексон",
+	L"Грант",
+	L"Дэвис",
+	L"Коллинс",
+	L"Брэдли",
+	L"Барлоу"
 }; 
  int genious_random(int first,int last);
-
- //goooool
  class Sprite {
  protected:
 	 SDL_Texture* texture = nullptr;

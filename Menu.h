@@ -16,13 +16,13 @@ public:
 
 			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"новая игра", 72, rect, "textures/active_fon.png"));
 			rect.y += 150;
-			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"load game", 72, rect, "textures/active_fon.png"));
+			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"загрузить игру", 72, rect, "textures/active_fon.png"));
 			rect.y += 150;
-			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"settings", 72, rect, "textures/active_fon.png"));
+			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"настройки", 72, rect, "textures/active_fon.png"));
 			rect.y += 150;
-			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"about author", 72, rect, "textures/active_fon.png"));
+			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"про автора", 72, rect, "textures/active_fon.png"));
 			rect.y += 150;
-			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"exit", 72, rect, "textures/active_fon.png"));
+			q.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"выход", 72, rect, "textures/active_fon.png"));
 			addButtonRow(q);
 			//manager.buttons[0][0]->is_active = true;
 			//manager.active = true;
@@ -36,7 +36,7 @@ public:
 	void manageButton(size_t type){
 		Level::manageButton();
 		if (type == SDL_MOUSEBUTTONDOWN && currentrow!=-1 && currentbutton != -1) {
-			if (buttons[currentrow][currentbutton]->get_text() == "new game") {
+			if (buttons[currentrow][currentbutton]->get_text() == L"новая игра") {
 				current_level = TAVERN;
 			}
 		}

@@ -8,7 +8,8 @@
 //класс текст : строка, шрифт, поверхность->текстура, размер, цвет, рендер, координаты, изменение этого всего, в конструкторе инициализация
 class Text {
 protected:
-	std::wstring text, path;
+	std::string path;
+	std::wstring text;
 	TTF_Font* font;
 	SDL_Surface* surface;
 	SDL_Texture* texture;
@@ -19,7 +20,7 @@ public:
 	friend class Button;
 	Text() {
 		text = L"";
-		path = L"";
+		path = "";
 		font = nullptr;
 		surface = nullptr;
 		texture = nullptr;
@@ -29,14 +30,15 @@ public:
 		size = number;
 		text = tx;
 		font = TTF_OpenFont(nyTb, size);
-		surface = TTF_RenderUTF8_Solid(font, (const char*)text.c_str(), color);
+		surface = TTF_RenderUNICODE_Solid(font, (Uint16*)text.c_str(), color);
 		texture = SDL_CreateTextureFromSurface(ren, surface);
-		TTF_SizeText(font, (const char*)text.c_str(), &w, &h);
+		//TTF_SizeText(font, (const char*)text.c_str(), &w, &h);
+		TTF_SizeUNICODE(font, (Uint16*)text.c_str(), &w, &h);
 	}
 	void rename(const wchar_t* newname, SDL_Renderer* ren) {
 		text = newname;
 		SDL_FreeSurface(surface);
-		surface = TTF_RenderUTF8_Solid(font, (const char*)text.c_str(), color);
+		surface = TTF_RenderUNICODE_Solid(font, (Uint16*)text.c_str(), color);
 		SDL_DestroyTexture(texture);
 		texture = SDL_CreateTextureFromSurface(ren, surface);
 	}
@@ -67,7 +69,7 @@ public:
 		w = other.w;
 		h = other.h;
 		font = TTF_OpenFont((const char*)other.path.c_str(), size);
-		surface = TTF_RenderUTF8_Solid(font, (const char*) text.c_str(), color);
+		surface = TTF_RenderUNICODE_Solid(font, (Uint16*) text.c_str(), color);
 		texture = SDL_CreateTextureFromSurface(nullptr, surface);
 	}
 
@@ -85,7 +87,7 @@ public:
 			w = other.w;
 			h = other.h;
 			font = TTF_OpenFont((const char*)other.path.c_str(), size);
-			surface = TTF_RenderUTF8_Solid(font, (const char*)text.c_str(), color);
+			surface = TTF_RenderUNICODE_Solid(font, (Uint16*)text.c_str(), color);
 			texture = SDL_CreateTextureFromSurface(nullptr, surface);
 		}
 		return *this;

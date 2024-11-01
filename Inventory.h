@@ -15,27 +15,27 @@ public:
 	//ButtonManager manager;
 	Inventory(SDL_Renderer* ren, Ship& ship, int prev) {
 		previous_level = prev;
-		gold = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "Gold: ", 36, { 1550,200,500,100 }, "textures/active_fon.png");
-		page1 = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "1", 72, { 980,940,500,100 }, "textures/active_fon.png");
-		page2 = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "2", 72, { 1080,940,500,100 }, "textures/active_fon.png");
+		gold = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"Gold: ", 36, { 1550,200,500,100 }, "textures/active_fon.png");
+		page1 = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"1", 72, { 980,940,500,100 }, "textures/active_fon.png");
+		page2 = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"2", 72, { 1080,940,500,100 }, "textures/active_fon.png");
 		
-		go_back = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "Go back", 72, { 1280,740,500,100 }, "textures/active_fon.png");
-		std::string crewtext = "crewsize:	/";
-		std::stringstream ss2;
+		go_back = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"Go back", 72, { 1280,740,500,100 }, "textures/active_fon.png");
+		std::wstring crewtext = L"crewsize:	/";
+		std::wstringstream ss2;
 		ss2 << ship.crewsize;
-		std::string s2;
+		std::wstring s2;
 		ss2 >> s2;
 		crewtext += s2;
-		std::stringstream ss1;
+		std::wstringstream ss1;
 		ss1 << ship.crew.size();
-		std::string s1;
+		std::wstring s1;
 		ss1 >> s1;
 		crewsize_max = new Text("textures/fon.png", 48, crewtext.c_str(), ren, { 100,900,500,100 });
 		crewsize_cur = new Text("textures/fon.png", 48, s1.c_str(), ren, { 110,900,500,100 });
 
-		std::stringstream ss;
+		std::wstringstream ss;
 		ss << ship.get_gold();
-		std::string s;
+		std::wstring s;
 		ss >> s;
 		tgold = new Text("font/OpenSans-Light.ttf", 48, s.c_str(), ren, { 1550,250,500,100 });
 		page = 1;
@@ -46,8 +46,8 @@ public:
 		std::vector<Button*> ie;
 		std::vector<Button*> iq;
 		for (int i = 0; i < ship.crew.size(); i++) {
-			std::string mtext = ship.crew[i].name + "	" + "hp: " + std::to_string(ship.crew[i].hp) + "	dmg: " + std::to_string(ship.crew[i].dmg)
-				+ " price: " + std::to_string(ship.crew[i].price);
+			std::wstring mtext = ship.crew[i].name + L"	" + L"hp: " + std::to_wstring(ship.crew[i].hp) + L"	dmg: " + std::to_wstring(ship.crew[i].dmg)
+				+ L" price: " + std::to_wstring(ship.crew[i].price);
 			int y = 590 + i * 100;
 			int x = 90;
 			if (i < 6) {
@@ -106,7 +106,7 @@ public:
 			}
 			
 		}
-		tgold->rename(std::to_string(ship.get_gold()).c_str(), ren);
+		tgold->rename(std::to_wstring(ship.get_gold()).c_str(), ren);
 		tgold->RenderTexture(ren);
 	}
 	virtual void manageButton() {
@@ -131,15 +131,15 @@ public:
 		Inventory::manageButton();
 		if (type == SDL_MOUSEBUTTONDOWN && currentrow!= -1 && currentbutton!= -1) {
 			if (page == 1) {
-				if (buttons[currentrow][currentbutton]->get_text() == "Go back") {
+				if (buttons[currentrow][currentbutton]->get_text() == L"Go back") {
 					current_level = previous_level;
 					return;
 				}
-				if (buttons[currentrow][currentbutton]->get_text() == "2") {
+				if (buttons[currentrow][currentbutton]->get_text() == L"2") {
 					page = 2;
 					return;
 				}
-				if (buttons[currentrow][currentbutton]->get_text() == "1") {
+				if (buttons[currentrow][currentbutton]->get_text() == L"1") {
 					page = 1;
 					return;
 				}
@@ -149,11 +149,11 @@ public:
 			}
 
 			if (page == 2) {
-				if (items[currentrow][currentbutton]->get_text() == "2") {
+				if (items[currentrow][currentbutton]->get_text() == L"2") {
 					page = 2;
 					return;
 				}
-				if (items[currentrow][currentbutton]->get_text() == "1") {
+				if (items[currentrow][currentbutton]->get_text() == L"1") {
 					page = 1;
 					return;
 				}

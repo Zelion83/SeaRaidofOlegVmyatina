@@ -6,6 +6,7 @@
 #include"Button.h"
 #include"Button_manager.h"
 #include"Ship&Sailor.h"
+Ship ship(10, 1000);
 class Tavern:Level {
 public:
 	Sprite* pikcha;
@@ -21,17 +22,17 @@ public:
 	int page = 1;
 	Tavern(SDL_Renderer* ren, Ship& ship, int page) {
 			pikcha = new Sprite("textures/zal.png", ren, 400, 50, 960, 540);
-			gold = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "Gold: ", 36, { 1550,200,500,100 }, "textures/active_fon.png");
-			texts = new Text("font/OpenSans-Light.ttf", 36, "Gold:", ren, { 1550,200,500,100 });
-			gtta = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "go to the adventure", 36, { 1450,100,500,100 }, "textures/active_fon.png");
-			inv = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "INVENTORY", 36, { 1450,350,500,100 }, "textures/active_fon.png");
-			page1 = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "next", 36, { 1650,550,500,100 }, "textures/active_fon.png");
-			page2 = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, "back", 36, { 1650,600,500,100 }, "textures/active_fon.png");
-			std::stringstream ss;
+			gold = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"Золото: ", 36, { 1550,200,500,100 }, "textures/active_fon.png");
+			texts = new Text("font/OpenSans-Light.ttf", 36, L"Gold:", ren, { 1550,200,500,100 });
+			gtta = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"в приключение", 36, { 1450,100,500,100 }, "textures/active_fon.png");
+			inv = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"ИНВЕНТАРЬ", 36, { 1450,350,500,100 }, "textures/active_fon.png");
+			page1 = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"далее", 36, { 1650,550,500,100 }, "textures/active_fon.png");
+			page2 = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"назад", 36, { 1650,600,500,100 }, "textures/active_fon.png");
+			std::wstringstream ss;
 			ss << ship.get_gold();
-			std::string s;
+			std::wstring s;
 			ss >> s;
-			tgold = new Text("font/OpenSans-Light.ttf", 48, s.c_str(), ren, { 1550,250,500,100 });
+			tgold = new Text("font/OpenSans-Light.ttf", 48, (const wchar_t*)s.c_str(), ren, { 1550,250,500,100 });
 			std::vector<Button*> w;
 			std::vector<Button*> e;
 			std::vector<Button*> ie;
@@ -48,13 +49,13 @@ public:
 				int msurname = genious_random(0, surnames.size() - 1);
 				Sailor freak;
 				freak.price = (freak.hp + freak.dmg) / 2;
-				freak.name = names[mname] + " " + surnames[msurname];
+				freak.name = names[mname] + L" " + surnames[msurname];
 				freaks.push_back(freak);
 			}
 			
 			for (int i = 0; i < 3;/* chislo + 1;*/ i++) {
-				std::string mtext = freaks[i].name + "	" + "hp: " + std::to_string(freaks[i].hp) + "	dmg: " + std::to_string(freaks[i].dmg)
-					+ " price: " + std::to_string(freaks[i].price);
+				std::wstring mtext = freaks[i].name + L"	" + L"ОЗ: " + std::to_wstring(freaks[i].hp) + L"	ОД: " + std::to_wstring(freaks[i].dmg)
+					+ L" цена: " + std::to_wstring(freaks[i].price);
 				int y = 590 + i * 100;
 				int x = 90;
 				if (i < 6) {
@@ -70,7 +71,7 @@ public:
 			}
 			//2
 			for (int i = 0; i < chislo1; ++i) {
-				std::string mtext = itemss[i]->name + ":	" + itemss[i]->opisanie + " price: " + std::to_string(itemss[i]->price);
+				std::wstring mtext = itemss[i]->name + L":	" + itemss[i]->opisanie + L" цена: " + std::to_wstring(itemss[i]->price);
 				int y = 590 + i * 100;
 				int x = 90;
 				if (i < 6) {
@@ -130,7 +131,7 @@ public:
 		
 			pikcha->update(ren);
 			gold->update(ren);
-			tgold->rename(std::to_string(ship.get_gold()).c_str(), ren);
+			tgold->rename(std::to_wstring(ship.get_gold()).c_str(), ren);
 			tgold->RenderTexture(ren);;
 		}
 		if (page == 2) {
@@ -143,7 +144,7 @@ public:
 				}
 
 			}
-			tgold->rename(std::to_string(ship.get_gold()).c_str(), ren);
+			tgold->rename(std::to_wstring(ship.get_gold()).c_str(), ren);
 			tgold->RenderTexture(ren);
 		}
 	}
@@ -152,14 +153,14 @@ public:
 		if(page == 2)Tavern::manageButton();
 		if (type == SDL_MOUSEBUTTONDOWN && currentrow != -1 && currentbutton != -1) {
 			if (page == 1) {
-				if (buttons[currentrow][currentbutton]->get_text() == "go to the adventure") { 
+				if (buttons[currentrow][currentbutton]->get_text() == L"в приключение") { 
 					current_level = ADVENTURE;
 				}
-				if (buttons[currentrow][currentbutton]->get_text() == "next") {
+				if (buttons[currentrow][currentbutton]->get_text() == L"далее") {
 					page = 2;
 					return;
 				}
-				if (buttons[currentrow][currentbutton]->get_text() == "INVENTORY") {
+				if (buttons[currentrow][currentbutton]->get_text() == L"ИНВЕНТАРЬ") {
 					current_level = INVENTORY;
 					return;
 				}
@@ -174,7 +175,7 @@ public:
 			}
 			if (page == 2) {
 				
-				if (itbuttons[currentrow][currentbutton]->get_text() == "back") {
+				if (itbuttons[currentrow][currentbutton]->get_text() == L"назад") {
 					page = 1;
 					currentrow = -1;
 					currentbutton = -1; 
