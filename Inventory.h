@@ -15,12 +15,12 @@ public:
 	//ButtonManager manager;
 	Inventory(SDL_Renderer* ren, Ship& ship, int prev) {
 		previous_level = prev;
-		gold = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"Gold: ", 36, { 1550,200,500,100 }, "textures/active_fon.png");
+		gold = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"золото: ", 36, { 1550,200,500,100 }, "textures/active_fon.png");
 		page1 = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"1", 72, { 980,940,500,100 }, "textures/active_fon.png");
 		page2 = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"2", 72, { 1080,940,500,100 }, "textures/active_fon.png");
 		
-		go_back = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"Go back", 72, { 1280,740,500,100 }, "textures/active_fon.png");
-		std::wstring crewtext = L"crewsize:	/";
+		go_back = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"назад:", 72, { 1280,740,500,100 }, "textures/active_fon.png");
+		std::wstring crewtext = L"размер экипажа:	/";
 		std::wstringstream ss2;
 		ss2 << ship.crewsize;
 		std::wstring s2;
@@ -46,8 +46,8 @@ public:
 		std::vector<Button*> ie;
 		std::vector<Button*> iq;
 		for (int i = 0; i < ship.crew.size(); i++) {
-			std::wstring mtext = ship.crew[i].name + L"	" + L"hp: " + std::to_wstring(ship.crew[i].hp) + L"	dmg: " + std::to_wstring(ship.crew[i].dmg)
-				+ L" price: " + std::to_wstring(ship.crew[i].price);
+			std::wstring mtext = ship.crew[i].name + L"	" + L"ОЗ: " + std::to_wstring(ship.crew[i].hp) + L"	ОУ: " + std::to_wstring(ship.crew[i].dmg)
+				+ L" цена: " + std::to_wstring(ship.crew[i].price);
 			int y = 590 + i * 100;
 			int x = 90;
 			if (i < 6) {
@@ -131,7 +131,7 @@ public:
 		Inventory::manageButton();
 		if (type == SDL_MOUSEBUTTONDOWN && currentrow!= -1 && currentbutton!= -1) {
 			if (page == 1) {
-				if (buttons[currentrow][currentbutton]->get_text() == L"Go back") {
+				if (buttons[currentrow][currentbutton]->get_text() == L"назад:") {
 					current_level = previous_level;
 					return;
 				}
