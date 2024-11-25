@@ -132,10 +132,12 @@
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="Button_manager.h" />
+    <ClInclude Include="End.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="quick_stats.h" />
     <ClInclude Include="Ship&amp;Sailor.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Tavern.h" />

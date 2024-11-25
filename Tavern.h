@@ -8,7 +8,7 @@
 #include"Ship&Sailor.h"
 Ship ship(10, 1000);
 class Tavern:Level {
-public:
+public: 
 	Sprite* pikcha;
 	Button* gtta,*inv;
 	Button* gold;
@@ -22,17 +22,17 @@ public:
 	int page = 1;
 	Tavern(SDL_Renderer* ren, Ship& ship, int page) {
 			pikcha = new Sprite("textures/zal.png", ren, 400, 50, 960, 540);
-			gold = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"Золото: ", 36, { 1550,200,500,100 }, "textures/active_fon.png");
-			texts = new Text("font/OpenSans-Light.ttf", 36, L"Gold:", ren, { 1550,200,500,100 });
-			gtta = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"в приключение", 36, { 1450,100,500,100 }, "textures/active_fon.png");
-			inv = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"ИНВЕНТАРЬ", 36, { 1450,350,500,100 }, "textures/active_fon.png");
-			page1 = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"далее", 36, { 1650,550,500,100 }, "textures/active_fon.png");
-			page2 = new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, L"назад", 36, { 1650,600,500,100 }, "textures/active_fon.png");
+			gold = new Button(ren, L"Золото: ", 36, { 1550,200,500,100 }, "textures/active_fon.png");
+			texts = new Text( 36, L"Золото:", ren, { 1550,200,500,100 });
+			gtta = new Button(ren, L"в приключение", 36, { 1450,100,500,100 }, "textures/active_fon.png");
+			inv = new Button(ren, L"ИНВЕНТАРЬ", 36, { 1450,350,500,100 }, "textures/active_fon.png");
+			page1 = new Button(ren, L"далее", 36, { 1650,550,500,100 }, "textures/active_fon.png");
+			page2 = new Button(ren, L"назад", 36, { 1650,600,500,100 }, "textures/active_fon.png");
 			std::wstringstream ss;
 			ss << ship.get_gold();
 			std::wstring s;
 			ss >> s;
-			tgold = new Text("font/OpenSans-Light.ttf", 48, (const wchar_t*)s.c_str(), ren, { 1550,250,500,100 });
+			tgold = new Text(48, (const wchar_t*)s.c_str(), ren, { 1550,250,500,100 });
 			std::vector<Button*> w;
 			std::vector<Button*> e;
 			std::vector<Button*> ie;
@@ -48,23 +48,24 @@ public:
 				int mname = genious_random(0, names.size() - 1);
 				int msurname = genious_random(0, surnames.size() - 1);
 				Sailor freak;
-				freak.price = (freak.hp + freak.dmg) / 2;
+				//freak.price = (freak.hp + freak.dmg) / 2;
+				freak.cprice((freak.ghp() + freak.gdmg()) / 2);
 				freak.name = names[mname] + L" " + surnames[msurname];
 				freaks.push_back(freak);
 			}
 			
-			for (int i = 0; i < 3;/* chislo + 1;*/ i++) {
-				std::wstring mtext = freaks[i].name + L"	" + L"ОЗ: " + std::to_wstring(freaks[i].hp) + L"	ОД: " + std::to_wstring(freaks[i].dmg)
-					+ L" цена: " + std::to_wstring(freaks[i].price);
+			for (int i = 0; i < 3; i++) {
+				std::wstring mtext = freaks[i].name + L"	" + L"ОЗ: " + std::to_wstring(freaks[i].ghp()) + L"	ОД: " + std::to_wstring(freaks[i].gdmg())
+					+ L" цена: " + std::to_wstring(freaks[i].gprice());
 				int y = 590 + i * 100;
 				int x = 90;
 				if (i < 6) {
-					w.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, mtext.c_str(), 36, { x,y,500,100 }, "textures/active_fon.png"));
+					w.push_back(new Button(ren, mtext.c_str(), 36, { x,y,500,100 }, "textures/active_fon.png"));
 				}
 				if (i >= 6) {
 					y = 590 + (i - 6) * 100;
 					x = 940;
-					e.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, mtext.c_str(), 36, { x,y,500,100 }, "textures/active_fon.png"));
+					e.push_back(new Button(ren, mtext.c_str(), 36, { x,y,500,100 }, "textures/active_fon.png"));
 				}
 
 
@@ -75,12 +76,12 @@ public:
 				int y = 590 + i * 100;
 				int x = 90;
 				if (i < 6) {
-					iw.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, mtext.c_str(), 36, { x,y,500,100 }, "textures/active_fon.png"));
+					iw.push_back(new Button(ren, mtext.c_str(), 36, { x,y,500,100 }, "textures/active_fon.png"));
 				}
 				if (i >= 6) {
 					y = 590 + (i - 6) * 100;
 					x = 940;
-					ie.push_back(new Button("textures/fon.png", "font/OpenSans-Light.ttf", ren, mtext.c_str(), 36, { x,y,500,100 }, "textures/active_fon.png"));
+					ie.push_back(new Button(ren, mtext.c_str(), 36, { x,y,500,100 }, "textures/active_fon.png"));
 				}
 			}
 			std::vector<Button*> q;
@@ -89,15 +90,33 @@ public:
 			q.push_back(inv);
 			q.push_back(page1);
 
-			//q.push_back(page2);
 			iq.push_back(page2);
 			addButtonRow(w);
 			if (e.size() > 0)addButtonRow(e);
 			addButtonRow(q);
-			//buttons[0][0]->is_active = true;
 			itbuttons.push_back(iw);
 			itbuttons.push_back(ie);
 			itbuttons.push_back(iq);
+			/*
+			for (int i = 0; i < iw.size();++i) {
+				delete iw[i];
+			}
+			for (int i = 0; i < ie.size(); ++i) {
+				delete ie[i];
+			}
+			for (int i = 0; i < iq.size(); ++i) {
+				delete iq[i];
+			}
+			for (int i = 0; i < q.size(); ++i) {
+				delete q[i];
+			}
+			for (int i = 0; i < w.size(); ++i) {
+				delete w[i];
+			}
+			for (int i = 0; i < e.size(); ++i) {
+				delete e[i];
+			}
+			*/
 	}
 	virtual void manageButton() {
 		currentrow = -1;
@@ -155,6 +174,7 @@ public:
 			if (page == 1) {
 				if (buttons[currentrow][currentbutton]->get_text() == L"в приключение") { 
 					current_level = ADVENTURE;
+					return;
 				}
 				if (buttons[currentrow][currentbutton]->get_text() == L"далее") {
 					page = 2;
@@ -193,5 +213,20 @@ public:
 			}
 			
 		}
+	}
+	~Tavern() {
+		for (auto& i : buttons) {
+			for (auto j : i) {
+				delete j;
+				j = nullptr;
+			}
+		}
+		for (auto& i : itbuttons) {
+			for (auto j : i) {
+				delete j;
+				j = nullptr;
+			}
+		}
+		delete pikcha, gtta, inv, gold, tgold, texts, page1, page2;
 	}
 };

@@ -53,6 +53,12 @@
     <ClInclude Include="Level.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="End.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="quick_stats.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

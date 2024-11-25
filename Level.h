@@ -26,13 +26,13 @@ public:
             if (currentrow != -1) break;
         }
         
-        if (currentrow == -1) return; // no active button
+        if (currentrow == -1) return; 
         
         int newrow = currentrow;
         int newbutton = currentbutton;
     }
     virtual void update() {
-        for (auto i : buttons) {
+        for (auto& i : buttons) {
             for (auto j : i) {
                 j->update(ren);
             }

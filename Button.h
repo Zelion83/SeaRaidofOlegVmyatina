@@ -14,6 +14,7 @@ public:
 	std::wstring get_text() {
 		return text.text;
 	}
+	/*
 	Button() {
 		text.x = x = 0;
 		text.y = y = 0;
@@ -24,7 +25,9 @@ public:
 		text.size = 48;
 		text.color = { 255,255,255 };
 	}
-	Button(const char* qpath, const char* mfontpath, SDL_Renderer* ren, const wchar_t* mtext, int mrazmer, SDL_Rect rect,const char* newpath) {
+	*/
+	
+	Button( SDL_Renderer* ren, const wchar_t* mtext, int mrazmer, SDL_Rect rect,const char* newpath, const char* qpath = "textures/fon.png", const char* mfontpath = "font/OpenSans-Light.ttf") {
 		path = qpath;
 		if (texture != nullptr) SDL_DestroyTexture(texture);
 		if (text.font != nullptr) TTF_CloseFont(text.font);
@@ -39,23 +42,18 @@ public:
 		text.y = y = rect.y;
 		w = rect.w;
 		h = rect.h;
-		/*
-		if (text.text.size() < w) {
-			text.w = (text.text.size() * 40);
-		}
-		*/
 
 		newtexture = IMG_LoadTexture(ren,newpath);
 		text.size = mrazmer;
 		text.path = mfontpath;
 		text.font = TTF_OpenFont(text.path.c_str(), text.size);
-		//TTF_SizeText(text.font, (const char*)text.text.c_str(), &text.w, &text.h);
 		TTF_SizeUNICODE(text.font, (Uint16*)text.text.c_str(), &text.w, &text.h);
 		w = text.w;
 		h = text.h;
-		text.surface = TTF_RenderUNICODE_Solid(text.font, (Uint16*)text.text.c_str(), text.color); //TTF_RenderUTF8_Solid(text.font, text.text.c_str(), text.color);
+		text.surface = TTF_RenderUNICODE_Solid(text.font, (Uint16*)text.text.c_str(), text.color);
 		text.texture = SDL_CreateTextureFromSurface(ren, text.surface);
 	}
+	
 	SDL_Rect* get_coord() {
 		SDL_Rect dst = { x,y,w,h };
 		return &dst;
@@ -108,7 +106,7 @@ public:
 		if (texture != nullptr) {
 			SDL_DestroyTexture(texture);
 		}
-		if (newtexture != nullptr) {
+		if (newtexture != nullptr) { // ошибка с inventory возникает потому, что page1 и page2 очищаются во второй раз
 			SDL_DestroyTexture(newtexture);
 		}
 		
@@ -116,6 +114,7 @@ public:
 	Button& operator=(const Button& other) {
 		if (this != &other) {
 			operator=(other);
+			/*
 			TTF_CloseFont(text.font);
 			text.font = other.text.font;
 			SDL_FreeSurface(text.surface);
@@ -129,11 +128,14 @@ public:
 			text = other.text;
 			text.size = other.text.size;
 			text.color = other.text.color;
-			
+			*/
+			text = other.text;
 		}
 		return *this;
 	}
 	Button(const Button& other) : Sprite(other) {
+		text = other.text;
+		/*
 		text.color = { 255,255,255 };
 		text.font = TTF_OpenFont(other.text.path.c_str(), text.size);
 		
@@ -142,6 +144,6 @@ public:
 		newtexture = other.texture;
 		text.text = other.text.text;
 		text.size = other.text.size;
-
+		*/
 	}
 };

@@ -1,30 +1,14 @@
 ﻿  main.cpp
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Item.h(28,10): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(98,14): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(99,14): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(100,13): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(101,13): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(101,10): warning C4477: "printf": в строке форматирования "%s" требуется аргумент типа "char *", но вариативный аргумент "1" имеет тип "const _Elem *"
-          with
-          [
-              _Elem=wchar_t
-          ]
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(101,10): message : рекомендуется использовать "%ls" в строке форматирования
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(101,10): message : рекомендуется использовать "%lls" в строке форматирования
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(101,10): message : рекомендуется использовать "%Ls" в строке форматирования
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(101,10): message : рекомендуется использовать "%ws" в строке форматирования
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(105,10): warning C4477: "printf": в строке форматирования "%s" требуется аргумент типа "char *", но вариативный аргумент "1" имеет тип "const _Elem *"
-          with
-          [
-              _Elem=wchar_t
-          ]
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(105,10): message : рекомендуется использовать "%ls" в строке форматирования
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(105,10): message : рекомендуется использовать "%lls" в строке форматирования
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(105,10): message : рекомендуется использовать "%Ls" в строке форматирования
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(105,10): message : рекомендуется использовать "%ws" в строке форматирования
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(69,10): warning C4244: return: преобразование "unsigned __int64" в "int", возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(96,14): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(97,14): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(98,13): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(99,13): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(95,10): warning C4244: return: преобразование "unsigned __int64" в "int", возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Menu.h(16,80): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Menu.h(16,71): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
 C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(42,48): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
 C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(44,54): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
 C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(48,48): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
 C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(49,54): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\main.cpp(57,9): warning C4930: Sprite pikcha(void): функция с прототипом не вызвана (предполагалось определение переменной?)
   SEROV3_RESURRECTED.vcxproj -> C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\x64\Debug\SEROV3_RESURRECTED.exe

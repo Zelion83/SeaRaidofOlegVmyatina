@@ -24,8 +24,4 @@ public:
 		std::wstring mtext = name +L":	" +opisanie + L" price: " + std::to_wstring(price);
 		return mtext;
 	}
-	int five() { //вызывает исключение 
-		return price;
-	}
 };
-//ship.inventory[i]->get_name().c_str()

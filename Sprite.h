@@ -14,7 +14,8 @@ enum levels {
 	SETTINGS,
 	TAVERN,
 	ADVENTURE,
-	INVENTORY
+	INVENTORY,
+	END
 };
 enum events {
 	PIRATES,
@@ -43,7 +44,7 @@ std::vector<Item*> items{
 };
 short current_level = MAIN_MENU; 
 
-std::vector<std::wstring> names{ //= new std::vector<std::string>{
+std::vector<std::wstring> names{
 	 L"Оливер",
 	 L"Джек",
 	 L"Гарри",
@@ -55,7 +56,7 @@ std::vector<std::wstring> names{ //= new std::vector<std::string>{
 	 L"Джеймс",
 	 L"Вильям" 
 };
-std::vector<std::wstring> surnames{ //= new std::vector<std::string>{
+std::vector<std::wstring> surnames{
 	L"Вильямс",
 	L"Питерс",
 	L"Гибсон",
@@ -72,21 +73,25 @@ std::vector<std::wstring> surnames{ //= new std::vector<std::string>{
  class Sprite {
  protected:
 	 SDL_Texture* texture = nullptr;
-	 std::string path;
-	 int x, y, w, h;
  public:
+	 std::string path;
+	 int x = 0, y = 0, w = 25, h = 25;
 	 virtual void RenderTexture(SDL_Renderer* ren) {
 		 SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
 		 SDL_Rect dst = { x,y,w,h };
 		 SDL_RenderCopy(ren, texture, nullptr, &dst);
 	 }
-	 Sprite() {
+	 /*
+	Sprite() {
 		x = 0;
 		y = 0;
 		w = 25;
 		h = 25;
 		path = "";
 	 };
+	 */
+	 Sprite() {}
+	 /*
 	 Sprite(const char* qpath, SDL_Renderer* ren,int mx, int my, int mw, int mh) {
 		 path = qpath;
 		 texture = IMG_LoadTexture(ren, qpath);
@@ -94,7 +99,12 @@ std::vector<std::wstring> surnames{ //= new std::vector<std::string>{
 		 y = my;
 		 w = mw;
 		 h = mh;
-		 //RenderTexture(ren, texture, x, y, w, h);
+	 }
+	 */
+	 Sprite(const char* qpath, SDL_Renderer* ren, int mx, int my, int mw, int mh):
+		 path(qpath), x{mx},y{my},w{mw},h{mh}
+	 {
+		 texture = IMG_LoadTexture(ren, qpath);
 	 }
 	 virtual void update(SDL_Renderer* ren) {
 		 RenderTexture(ren);
@@ -107,7 +117,8 @@ std::vector<std::wstring> surnames{ //= new std::vector<std::string>{
 		 }
 	 }
 	 Sprite(const Sprite& other) {
-		 texture = other.texture;
+		 //texture = other.texture;
+		 texture = IMG_LoadTexture(ren, other.path.c_str());
 		 path = other.path;
 		 x = other.x;
 		 y = other.y;
@@ -118,7 +129,8 @@ std::vector<std::wstring> surnames{ //= new std::vector<std::string>{
 	 Sprite& operator=(const Sprite& other) {
 		 if (this != &other) {
 			 SDL_DestroyTexture(texture);
-			 texture = other.texture;
+			 texture = IMG_LoadTexture(ren, other.path.c_str());
+			 //texture = other.texture;
 			 path = other.path;
 			 x = other.x;
 			 y = other.y;
