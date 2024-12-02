@@ -1,5 +1,5 @@
-.suo
-.db
-.db-shm
-.ipch
-.vsidx
+*.suo
+*.db
+*.db-shm
+*.ipch
+*.vsidx
