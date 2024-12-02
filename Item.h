@@ -21,7 +21,7 @@ public:
 		return name;
 	}
 	std::wstring convert_to_string() {
-		std::wstring mtext = name +L":	" +opisanie + L" price: " + std::to_wstring(price);
+		std::wstring mtext = name +L":	" +opisanie + L" цена: " + std::to_wstring(price);
 		return mtext;
 	}
 };

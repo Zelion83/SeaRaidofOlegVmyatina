@@ -56,7 +56,9 @@ int main(int argc, char* argv[]) {
 	SDL_RenderClear(ren);
 	Sprite pikcha();
 	Quick_stats qs(ship, ren);
+	//Menu* menu = nullptr;
 	std::unique_ptr<Menu> menu;
+	//menu.reset();
 	std::unique_ptr<Tavern> tavern;
 	std::unique_ptr<Inventory> inventory;
 	std::unique_ptr<Fight> fight;
@@ -74,6 +76,7 @@ int main(int argc, char* argv[]) {
 			if (current_level == MAIN_MENU) {
 				if (menu == nullptr) {
 					menu = std::make_unique<Menu>(ren);
+					//menu = new Menu(ren);
 				}
 				if (tavern != nullptr) {
 					tavern.reset();
@@ -84,21 +87,13 @@ int main(int argc, char* argv[]) {
 				if (fight != nullptr) {
 					fight.reset();
 				}
-				
-					
-
 						menu->manageButton(ev.type);
-					
-				
-
-					menu->update(ren);
-					
-				
-				
+						menu->update(ren);
 			}
 			if (current_level == TAVERN) {
 				if(menu != nullptr){
 					menu.reset();
+					//delete menu; menu = nullptr;
 				}
 				if (inventory != nullptr) {
 					inventory.reset();
@@ -134,6 +129,9 @@ int main(int argc, char* argv[]) {
 				if (end == nullptr) {
 					end = std::make_unique< End>(ren);
 				}
+				menu.reset();
+				tavern.reset();
+				inventory.reset();
 				end->update();
 				end->manageButton(ev.type);
 			}

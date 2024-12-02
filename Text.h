@@ -34,10 +34,22 @@ public:
 		x = rect.x; y = rect.y; w = rect.w; h = rect.h;
 		size = number;
 		text = tx;
+		path = nyTb;
 		font = TTF_OpenFont(nyTb, size);
+		TTF_SizeUNICODE(font, (Uint16*)text.c_str(), &w, &h);
 		surface = TTF_RenderUNICODE_Solid(font, (Uint16*)text.c_str(), color);
 		texture = SDL_CreateTextureFromSurface(ren, surface);
-		TTF_SizeUNICODE(font, (Uint16*)text.c_str(), &w, &h);
+		
+		if (surface == NULL) {
+			printf("Surface == NULL \n");
+			exit(22);
+		}
+
+		texture = SDL_CreateTextureFromSurface(ren, surface);
+		if (texture == NULL) {
+			printf("Error: %s", SDL_GetError());
+			exit(3);
+		}
 	}
 	
 	/*
@@ -62,6 +74,11 @@ public:
 		RenderTexture(ren);
 	}
 	void RenderTexture(SDL_Renderer* ren) {
+		/*if (texture == NULL) {
+			printf("Error!!!! %s", SDL_GetError());
+			exit(221);
+		}
+		*/
 		SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
 		SDL_Rect dst = { x,y,w,h };
 		SDL_RenderCopy(ren, texture, nullptr, &dst);
@@ -83,26 +100,30 @@ public:
 		h = other.h;
 		font = TTF_OpenFont(other.path.c_str(), size);
 		surface = TTF_RenderUNICODE_Solid(font, (Uint16*) text.c_str(), color);
-		texture = SDL_CreateTextureFromSurface(nullptr, surface);
+		texture = SDL_CreateTextureFromSurface(ren, surface);
 	}
 
 	Text& operator=(const Text& other) {
-		if (this != &other) {
-			TTF_CloseFont(font);
-			SDL_FreeSurface(surface);
-			SDL_DestroyTexture(texture);
-			text = other.text;
-			path = other.path;
-			size = other.size;
-			color = other.color;
-			x = other.x;
-			y = other.y;
-			w = other.w;
-			h = other.h;
-			font = TTF_OpenFont(other.path.c_str(), size);
-			surface = TTF_RenderUNICODE_Solid(font, (Uint16*)text.c_str(), color);
-			texture = SDL_CreateTextureFromSurface(nullptr, surface);
+		if (&other != nullptr) {
+			if (this != &other) {
+				TTF_CloseFont(font);
+				SDL_FreeSurface(surface);
+				SDL_DestroyTexture(texture);
+				text = other.text;
+				path = other.path;
+				size = other.size;
+				color = other.color;
+				x = other.x;
+				y = other.y;
+				w = other.w;
+				h = other.h;
+				font = TTF_OpenFont(path.c_str(), size);
+				surface = TTF_RenderUNICODE_Solid(font, (Uint16*)text.c_str(), color);
+				texture = SDL_CreateTextureFromSurface(ren, surface);
+
+				
+			}
+			return *this;
 		}
-		return *this;
 	}
 };

@@ -5,21 +5,21 @@
 class Inventory:Level {
 protected:
 	
-	Button* gold,*page1,*page2,*go_back;
-	Text* crewsize_max,*crewsize_cur,*sell,*tgold,*texts;
+	Button gold,page1,page2,go_back;
+	Text crewsize_max,crewsize_cur,sell,tgold,texts;
 	int previous_level;
-	std::vector<std::vector<Button*>> items;
+	std::vector<std::vector<Button>> items;
 public:
 	int page;
 	friend class Ship;
 	//ButtonManager manager;
 	Inventory(SDL_Renderer* ren, Ship& ship, int prev) {
 		previous_level = prev;
-		gold = new Button(ren, L"золото: ", 36, { 1550,200,500,100 }, "textures/active_fon.png");
-		page1 = new Button( ren, L"1", 72, { 980,940,500,100 }, "textures/active_fon.png");
-		page2 = new Button(ren, L"2", 72, { 1080,940,500,100 }, "textures/active_fon.png");
+		gold =   Button(ren, L"золото: ", 36, { 1550,200,500,100 }, "textures/active_fon.png");
+		page1 =   Button( ren, L"1", 72, { 980,940,500,100 }, "textures/active_fon.png");
+		page2 =   Button(ren, L"2", 72, { 1080,940,500,100 }, "textures/active_fon.png");
 		
-		go_back = new Button(ren, L"назад:", 72, { 1280,740,500,100 }, "textures/active_fon.png");
+		go_back =   Button(ren, L"назад:", 72, { 1280,740,500,100 }, "textures/active_fon.png");
 		std::wstring crewtext = L"размер экипажа:	/";
 		std::wstringstream ss2;
 		ss2 << ship.crewsize;
@@ -30,33 +30,33 @@ public:
 		ss1 << ship.crew.size();
 		std::wstring s1;
 		ss1 >> s1;
-		crewsize_max = new Text(48, crewtext.c_str(), ren, { 100,900,500,100 });
-		crewsize_cur = new Text(48, s1.c_str(), ren, { 110,900,500,100 });
+		crewsize_max =   Text(48, crewtext.c_str(), ren, { 100,900,500,100 });
+		crewsize_cur =   Text(48, s1.c_str(), ren, { 110,900,500,100 });
 
 		std::wstringstream ss;
 		ss << ship.get_gold();
 		std::wstring s;
 		ss >> s;
-		tgold = new Text(48, s.c_str(), ren, { 1550,250,500,100 });
+		tgold =   Text(48, s.c_str(), ren, { 1550,250,500,100 });
 		page = 1;
-		std::vector<Button*> w;
-		std::vector<Button*> e;
-		std::vector<Button*> q;
-		std::vector<Button*> iw;
-		std::vector<Button*> ie;
-		std::vector<Button*> iq;
+		std::vector<Button> w;
+		std::vector<Button> e;
+		std::vector<Button> q;
+		std::vector<Button> iw;
+		std::vector<Button> ie;
+		std::vector<Button> iq;
 		for (int i = 0; i < ship.crew.size(); i++) {
-			std::wstring mtext = ship.crew[i].name + L"	" + L"ОЗ: " + std::to_wstring(ship.crew[i].ghp()) + L"	ОУ: " + std::to_wstring(ship.crew[i].gdmg())
+			std::wstring mtext = ship.crew[i].name + L"	" + L"ОЗ: " + std::to_wstring(ship.crew[i].ghp()) + L"	ОД: " + std::to_wstring(ship.crew[i].gdmg())
 				+ L" цена: " + std::to_wstring(ship.crew[i].gprice());
 			int y = 590 + i * 100;
 			int x = 90;
 			if (i < 6) {
-				w.push_back(new Button(ren, mtext.c_str(), 36, { x,y,500,100 }, "textures/active_fon.png"));
+				w.push_back(  Button(ren, mtext.c_str(), 36, { x,y,500,100 }, "textures/active_fon.png"));
 			}
 			if (i >= 6) {
 				y = 590 + (i - 6) * 100;
 				x = 940;
-				e.push_back(new Button(ren, mtext.c_str(), 36, { x,y,500,100 }, "textures/active_fon.png"));
+				e.push_back(  Button(ren, mtext.c_str(), 36, { x,y,500,100 }, "textures/active_fon.png"));
 			}
 
 		}
@@ -71,12 +71,12 @@ public:
 			int y = 590 + i * 100;
 			int x = 90;
 			if (i < 6) {
-				iw.push_back(new Button(ren, ship.inventory[i]->convert_to_string().c_str(), 36, {x,y,500,100}, "textures/active_fon.png"));
+				iw.push_back(  Button(ren, ship.inventory[i] .convert_to_string().c_str(), 36, {x,y,500,100}, "textures/active_fon.png"));
 			}
 			if (i >= 6) {
 				y = 590 + (i - 6) * 100;
 				x = 940;
-				ie.push_back(new Button(ren, ship.inventory[i]->convert_to_string().c_str(), 36, {x,y,500,100}, "textures/active_fon.png"));
+				ie.push_back(  Button(ren, ship.inventory[i] .convert_to_string().c_str(), 36, {x,y,500,100}, "textures/active_fon.png"));
 			}
 		}
 		iq.push_back(page1);
@@ -111,7 +111,7 @@ public:
 			for (int i = 0; i < buttons.size(); ++i) {
 
 				for (int j = 0; j < buttons[i].size(); ++j) {
-					buttons[i][j]->update(ren);
+					buttons[i][j] .update(ren);
 				}
 
 			}
@@ -120,14 +120,14 @@ public:
 			for (int i = 0; i < items.size(); ++i) {
 
 				for (int j = 0; j < items[i].size(); ++j) {
-					items[i][j]->update(ren);
+					items[i][j] .update(ren);
 				}
 
 			}
 			
 		}
-		tgold->rename(std::to_wstring(ship.get_gold()).c_str(), ren);
-		tgold->RenderTexture(ren);
+		tgold .rename(std::to_wstring(ship.get_gold()).c_str(), ren);
+		tgold .RenderTexture(ren);
 	}
 	virtual void manageButton() {
 		if (page == 1) { Level::manageButton(); return; }
@@ -135,7 +135,7 @@ public:
 		currentbutton = -1;
 		for (int i = 0; i < items.size(); i++) {
 			for (int j = 0; j < items[i].size(); j++) {
-				if (items[i][j]->is_active) {
+				if (items[i][j] .is_active) {
 					currentrow = i;
 					currentbutton = j;
 					break;
@@ -151,38 +151,41 @@ public:
 		Inventory::manageButton();
 		if (type == SDL_MOUSEBUTTONDOWN && currentrow!= -1 && currentbutton!= -1) {
 			if (page == 1) {
-				if (buttons[currentrow][currentbutton]->get_text() == L"назад:") {
+				if (buttons[currentrow][currentbutton] .get_text() == L"назад:") {
 					current_level = previous_level;
 					return;
 				}
-				if (buttons[currentrow][currentbutton]->get_text() == L"2") {
+				if (buttons[currentrow][currentbutton] .get_text() == L"2") {
 					page = 2;
 					return;
 				}
-				if (buttons[currentrow][currentbutton]->get_text() == L"1") {
+				if (buttons[currentrow][currentbutton] .get_text() == L"1") {
 					page = 1;
 					return;
 				}
-				ship.gold += 5;
+				//ship.gold += 5;
+				ship.delete_sailor(ship.decode_sailor(buttons[currentrow][currentbutton].get_text()));
 				buttons[currentrow].erase(buttons[currentrow].begin() + currentbutton);
 				return;
 			}
 
 			if (page == 2) {
-				if (items[currentrow][currentbutton]->get_text() == L"2") {
+				if (items[currentrow][currentbutton] .get_text() == L"2") {
 					page = 2;
 					return;
 				}
-				if (items[currentrow][currentbutton]->get_text() == L"1") {
+				if (items[currentrow][currentbutton] .get_text() == L"1") {
 					page = 1;
 					return;
 				}
-				ship.gold += 10;
+				//ship.gold += 10;
+				ship.delete_item(items[currentrow][currentbutton].get_text());
 				items[currentrow].erase(items[currentrow].begin() + currentbutton);
 				return;
 			}
 		}
 	}
+	/*
 	~Inventory() {
 		for (auto& i : buttons) {
 			for (auto j : i) {
@@ -199,4 +202,5 @@ public:
 		delete gold, page1, page2, crewsize_cur, crewsize_max, tgold, go_back,sell,texts;
 
 	}
+	*/
 };

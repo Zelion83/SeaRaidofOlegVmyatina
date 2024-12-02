@@ -22,7 +22,7 @@ enum events {
 	ISLAND,
 	PLAGUE,
 	MAP,
-	REBELLION
+	REBELLION //делаю первым
 };
 
 /*
@@ -37,10 +37,12 @@ std:: vector<std::string>items {
 	"MEDICINE_CHEST"
 };
 */
-std::vector<Item*> items{
-	new Item(L"Кот",L"+10 к боевому духу","textures/cat1.png",10,ren),
-	new Item(L"Обезьяна",L"+20 к боевому духу","textures/cat1.png",10,ren),
-	new Item(L"Пушки",L"+15 к мощи корабля","textures/cat1.png",10,ren)
+std::vector<Item> items{
+	 Item(L"Кот",L"+10 к боевому духу","textures/cat1.png",10,ren),
+	 Item(L"Обезьяна",L"+20 к боевому духу","textures/cat1.png",10,ren),
+	 Item(L"Пушки",L"+15 к мощи корабля","textures/cat1.png",10,ren),
+	 Item(L"Апетчка",L"повышает шансы выжить в мор", "textures/cat1.png",10,ren),
+	 Item(L"Капитанский мундир",L"Вы неотразимы. +10 к боевому духу","textures/cat1.png",10,ren)
 };
 short current_level = MAIN_MENU; 
 

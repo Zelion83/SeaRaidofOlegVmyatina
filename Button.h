@@ -10,6 +10,7 @@ public:
 	//friend class Button_manager;
 	bool is_active = false;
 	bool is_clicked = false;
+	std::string newpath;
 	SDL_Texture* newtexture = nullptr;
 	std::wstring get_text() {
 		return text.text;
@@ -26,7 +27,7 @@ public:
 		text.color = { 255,255,255 };
 	}
 	*/
-	
+	Button() {  };
 	Button( SDL_Renderer* ren, const wchar_t* mtext, int mrazmer, SDL_Rect rect,const char* newpath, const char* qpath = "textures/fon.png", const char* mfontpath = "font/OpenSans-Light.ttf") {
 		path = qpath;
 		if (texture != nullptr) SDL_DestroyTexture(texture);
@@ -34,6 +35,10 @@ public:
 		if (text.surface != nullptr) SDL_FreeSurface(text.surface);
 		if (text.texture != nullptr) SDL_DestroyTexture(text.texture);
 		texture = IMG_LoadTexture(ren, qpath);
+		text = { mrazmer,mtext,ren,rect };
+		x = rect.x;
+		y = rect.y;
+		/*
 		text.size = mrazmer;
 		text.text = mtext;
 		
@@ -43,15 +48,30 @@ public:
 		w = rect.w;
 		h = rect.h;
 
-		newtexture = IMG_LoadTexture(ren,newpath);
+		
 		text.size = mrazmer;
 		text.path = mfontpath;
 		text.font = TTF_OpenFont(text.path.c_str(), text.size);
+		
+		text.surface = TTF_RenderUNICODE_Solid(text.font, (Uint16*)text.text.c_str(), text.color);
+		text.texture = SDL_CreateTextureFromSurface(ren, text.surface);
+		if (text.texture == NULL) {
+			printf("%s", SDL_GetError());
+			exit(231);
+		}
+		*/
+		
 		TTF_SizeUNICODE(text.font, (Uint16*)text.text.c_str(), &text.w, &text.h);
 		w = text.w;
 		h = text.h;
-		text.surface = TTF_RenderUNICODE_Solid(text.font, (Uint16*)text.text.c_str(), text.color);
-		text.texture = SDL_CreateTextureFromSurface(ren, text.surface);
+		this->newpath = newpath;
+		newtexture = IMG_LoadTexture(ren, this->newpath.c_str());
+		if (newtexture == NULL) {
+			printf("Error!! %s", SDL_GetError());
+			exit(123);
+		}
+		
+		int i = 5 + 10;
 	}
 	
 	SDL_Rect* get_coord() {
@@ -90,7 +110,7 @@ public:
 			is_active = false;
 		}
 		RenderTexture(ren);
-		text.RenderTexture(ren);
+		text.render(ren);
 	}
 	void change_coord(size_t x, size_t y) {
 		this->x += x;
@@ -113,7 +133,7 @@ public:
 	}
 	Button& operator=(const Button& other) {
 		if (this != &other) {
-			operator=(other);
+			Sprite::operator=(other);
 			/*
 			TTF_CloseFont(text.font);
 			text.font = other.text.font;
@@ -130,11 +150,18 @@ public:
 			text.color = other.text.color;
 			*/
 			text = other.text;
+			if (newtexture != nullptr) {
+				SDL_DestroyTexture(newtexture);
+			}
+			newpath = other.newpath;
+			newtexture = IMG_LoadTexture(ren, other.newpath.c_str());
 		}
 		return *this;
 	}
 	Button(const Button& other) : Sprite(other) {
 		text = other.text;
+		newtexture = IMG_LoadTexture(ren, other.newpath.c_str());
+		newpath = other.newpath;
 		/*
 		text.color = { 255,255,255 };
 		text.font = TTF_OpenFont(other.text.path.c_str(), text.size);

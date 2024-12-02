@@ -8,13 +8,14 @@ public:
 		crew(48, L"Размер экипажа: ", ren, { 30,900,500,100 }), morale(48, L"Мораль экипажа:", ren, {600,900,500,100}),
 		gold(48, L"Золото: ", ren, {30,950,500,100 }), power(48, L"Сила корабля: ", ren, { 600,950,500,100 })
 	{
-		std::wstring ws = L"Размер экипажа: " + std::to_wstring(10);
+		std::wstring ws = L"Размер экипажа: " + std::to_wstring(ship.get_cursize());
 		crew.rename(ws.c_str(),ren);
 		ws = L"Мораль экипажа: " + std::to_wstring(ship.morale);
 		morale.rename(ws.c_str(), ren);
 		ws = L"Золото: " + std::to_wstring(ship.get_gold());
 		gold.rename(ws.c_str(), ren);
 		ws = L"Сила корабля: " + std::to_wstring(ship.power);
+		//power = Text(48, L"Сила корабля: ", ren, { 600,950,500,100 }); вот так нельзя инициализировать
 		power.rename(ws.c_str(), ren);
 
 	}
@@ -25,7 +26,7 @@ public:
 		power.render(ren);
 	}
 	void update(Ship& ship) {
-		std::wstring ws = L"Размер экипажа: " + std::to_wstring(10);
+		std::wstring ws = L"Размер экипажа: " + std::to_wstring(ship.get_cursize());
 		crew.rename(ws.c_str(), ren);
 		ws = L"Мораль экипажа: " + std::to_wstring(ship.morale);
 		morale.rename(ws.c_str(), ren);
