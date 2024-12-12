@@ -231,7 +231,7 @@ public:
 		}
 	}
 	/*
-	~Ship() {
+	~Ship() { 
 		for (auto i : items) {
 			delete i;
 			i = nullptr;
