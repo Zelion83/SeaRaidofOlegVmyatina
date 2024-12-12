@@ -15,7 +15,4 @@ C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\main.cpp(69,20): message : в
               T=Menu
           ]
 C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button_manager.h(57,78): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button_manager.h(81,34): error C2039: "item_manager": не является членом "Menu".
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Menu.h(6,7): message : см. объявление "Menu"
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button_manager.h(81,34): error C2039: "item_manager": не является членом "Inventory".
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Inventory.h(4,7): message : см. объявление "Inventory"
+  SEROV3_RESURRECTED.vcxproj -> C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\x64\Debug\SEROV3_RESURRECTED.exe
