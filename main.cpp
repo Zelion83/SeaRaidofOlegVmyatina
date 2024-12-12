@@ -14,13 +14,15 @@
 #include"Ship&Sailor.h"
 #include"Tavern.h"
 #include"Button_manager.h"
+#include"Fight.h"
+#include"End.h"
+#include"quick_stats.h"
 #include<clocale>
 #include<ctime>
+#include<memory>
 SDL_Window* window = NULL;
-
-
-
-
+//Если класс содержит указатель, он должен быть дополнен согласно правилу трёх - деструктором, конструктором копий и оператором присваивания
+// бля короче темка лютая ебейшая, надо сделать UI статов корабля постоянным, внизу куда-нибудь поставить, что бы игрок мог более обдуманно принимать решения
 int main(int argc, char* argv[]) {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		printf("error %s", SDL_GetError());
@@ -38,6 +40,10 @@ int main(int argc, char* argv[]) {
 
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 	Mix_VolumeMusic(10);
+	Mix_Music* temka = Mix_LoadMUS("music/call_of_the_sea.mp3");
+	//Mix_Chunk* temka2 = Mix_LoadWAV("call_of_the_sea.mp3");
+	Mix_PlayMusic(temka, 0);
+	//Mix_PlayChannel(-1, temka2, 1);
 	setlocale(LC_ALL, "Russian");
 	if (TTF_Init() < 0) {
 		printf("error %s", TTF_GetError());
@@ -48,10 +54,20 @@ int main(int argc, char* argv[]) {
 	ren = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
 	SDL_RenderClear(ren);
-	Sprite pikcha;
-	Menu* menu = nullptr;
-	Tavern* tavern = nullptr;
-	Inventory* inventory = nullptr;
+	Sprite pikcha();
+	Quick_stats qs(ship, ren);
+	//Menu* menu = nullptr;
+	std::unique_ptr<Menu> menu;
+	//menu.reset();
+	std::unique_ptr<Tavern> tavern;
+	std::unique_ptr<Inventory> inventory;
+	std::unique_ptr<Fight> fight;
+	std::unique_ptr<End> end;
+	//Menu* menu = nullptr;
+	//Tavern* tavern = nullptr;
+	//Inventory* inventory = nullptr;
+	//Fight* fight = nullptr;
+	//End* end = nullptr;
 	Sprite smegog("textures/smegog.png", ren, 100, 100, 1280, 720);
 	SDL_RenderPresent(ren);
 	SDL_Event ev;
@@ -59,60 +75,72 @@ int main(int argc, char* argv[]) {
 		while (SDL_PollEvent(&ev)) {
 			if (current_level == MAIN_MENU) {
 				if (menu == nullptr) {
-					menu = new Menu(ren);
-					
+					menu = std::make_unique<Menu>(ren);
+					//menu = new Menu(ren);
 				}
-				
-				
-					if (ev.type == SDL_KEYDOWN) {
-
-						menu->manager.switchButton(ev.key.keysym.sym,menu);
-					}
-				
-
-					menu->update(ren);
-					
-				
-				
-			}
-			
-			if (current_level == TAVERN) {
-				//printf("%s", typeid(tavern).name());
-				if(menu != nullptr){
-					delete menu; menu = nullptr;
+				if (tavern != nullptr) {
+					tavern.reset();
 				}
 				if (inventory != nullptr) {
-					delete inventory; inventory = nullptr;
+					inventory.reset();
 				}
-				if(tavern == nullptr) tavern = new Tavern(ren,ship,1);
-				if (ev.type == SDL_KEYDOWN) {
-					if(tavern->page == 1)
-					tavern->manager.switchButton(ev.key.keysym.sym,tavern);
-					if (tavern->page == 2) tavern->item_manager.switchButton(ev.key.keysym.sym,tavern);
+				if (fight != nullptr) {
+					fight.reset();
 				}
+						menu->manageButton(ev.type);
+						menu->update(ren);
+			}
+			if (current_level == TAVERN) {
+				if(menu != nullptr){
+					menu.reset();
+					//delete menu; menu = nullptr;
+				}
+				if (inventory != nullptr) {
+					inventory.reset();
+				}
+				if (fight != nullptr) {
+					fight.reset();
+				}
+				if(tavern == nullptr) tavern = std::make_unique< Tavern>(ren,ship,1);
 				tavern->tavern_update(ren, ship);
+				tavern->manage_buttons(ev.type);
+				qs.update(ship);
 			}
 			if (current_level == ADVENTURE) {
 				if (tavern != nullptr) {
-					delete tavern; tavern = nullptr;
+					tavern.reset();
 				}
-				smegog.update(ren);
+				if (inventory != nullptr) {
+					inventory.reset();
+				}
+				if(fight == nullptr) fight = std::make_unique< Fight>(ren);
+				fight->update();
+				fight->manageButton(ev.type,ship);
 			}
 			if (current_level == INVENTORY) {
 				if (inventory == nullptr) {
-					inventory = new Inventory(ren, ship);
-				}
-				
-				if (ev.type == SDL_KEYDOWN) {
-					inventory->manager.switchButton(ev.key.keysym.sym,inventory);
+					inventory = std::make_unique< Inventory>(ren, ship,TAVERN);
 				}
 				inventory->update(ren, ship);
+				inventory->manage_buttons(ev.type,ship);
+				qs.update(ship);
+			}
+			if(current_level == END){
+				if (end == nullptr) {
+					end = std::make_unique< End>(ren);
+				}
+				menu.reset();
+				tavern.reset();
+				inventory.reset();
+				end->update();
+				end->manageButton(ev.type);
 			}
 			if (ev.type == SDL_QUIT) {
 				goto mark1;
 				exit(0);
 
 			}
+			qs.show(ren);
 			SDL_RenderPresent(ren);
 			SDL_RenderClear(ren);
 		}
@@ -120,8 +148,10 @@ int main(int argc, char* argv[]) {
 mark1:
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(ren);
-	delete menu;
-	delete tavern;
+	Mix_CloseAudio();
+	//delete menu;
+	//delete tavern;
+	//delete inventory;
 	SDL_Quit();
 	return 0;
 }

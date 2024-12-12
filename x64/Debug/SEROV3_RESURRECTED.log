@@ -1,18 +1,3 @@
-﻿  main.cpp
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(73,14): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(74,14): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(75,13): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(76,13): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(66,10): warning C4244: return: преобразование "unsigned __int64" в "int", возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(41,46): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(43,52): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(47,48): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(48,54): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button_manager.h(42,60): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\main.cpp(69,20): message : выполняется компиляция ссылки на экземпляр шаблон функции "void ButtonManager::switchButton<Menu>(SDL_Keycode,T *)"
-          with
-          [
-              T=Menu
-          ]
-C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button_manager.h(57,78): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+﻿  LINK : не найден или не выполнена сборка C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\x64\Debug\SEROV3_RESURRECTED.exe при последней инкрементной компоновке; выполняется полная компоновка
+main.obj : warning LNK4205: в "" отсутствует текущие отладочные данные для ссылок на модуль; компоновка объекта выполняется как при отсутствии отладочных данных
   SEROV3_RESURRECTED.vcxproj -> C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\x64\Debug\SEROV3_RESURRECTED.exe

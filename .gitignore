@@ -81,7 +81,10 @@ appsettings.Staging.json
 *.vsix
 .vs2019/
 .vs2022/
+<<<<<<< HEAD
 
+=======
+>>>>>>> abstract_batya
 #my hernya
 *.pdb
 *.idb

@@ -14,15 +14,17 @@ enum levels {
 	SETTINGS,
 	TAVERN,
 	ADVENTURE,
-	INVENTORY
+	INVENTORY,
+	END
 };
 enum events {
 	PIRATES,
 	ISLAND,
 	PLAGUE,
 	MAP,
-	REBELLION
+	REBELLION //делаю первым
 };
+
 /*
 std:: vector<std::string>items {
 	"CAT",
@@ -32,60 +34,66 @@ std:: vector<std::string>items {
 	"MEGA_SABRE",
 	"SUPPLY",
 	"BOOK_OF_LEGENDS",
-	"MEDECINE_CHEST"
+	"MEDICINE_CHEST"
 };
 */
-std::vector<Item*> items{
-	new Item("Cat","Gain a +10 crewmorale","textures/cat1.png",10,ren)
+std::vector<Item> items{
+	 Item(L"Кот",L"+10 к боевому духу","textures/cat1.png",10,ren),
+	 Item(L"Обезьяна",L"+20 к боевому духу","textures/cat1.png",10,ren),
+	 Item(L"Пушки",L"+15 к мощи корабля","textures/cat1.png",10,ren),
+	 Item(L"Апетчка",L"повышает шансы выжить в мор", "textures/cat1.png",10,ren),
+	 Item(L"Капитанский мундир",L"Вы неотразимы. +10 к боевому духу","textures/cat1.png",10,ren)
 };
 short current_level = MAIN_MENU; 
 
-std::vector<std::string> names{ //= new std::vector<std::string>{
-	"Oliver",
-	 "Jack",
-	 "Harry",
-	 "Jacob",
-	 "Charley",
-	 "Thomas",
-	 "George",
-	 "Oscar",
-	 "James",
-	 "William" 
+std::vector<std::wstring> names{
+	 L"Оливер",
+	 L"Джек",
+	 L"Гарри",
+	 L"Иаков",
+	 L"Чарли",
+	 L"Томас",
+	 L"Георг",
+	 L"Оскар",
+	 L"Джеймс",
+	 L"Вильям" 
 };
-std::vector<std::string> surnames{ //= new std::vector<std::string>{
-	"Williams",
-	"Peters",
-	"Gibson",
-	"Martin",
-	"Jordan",
-	"Jackson",
-	"Grant",
-	"Davis",
-	"Collins",
-	"Bradley",
-	"Barlow"
+std::vector<std::wstring> surnames{
+	L"Вильямс",
+	L"Питерс",
+	L"Гибсон",
+	L"Мартин",
+	L"Джордан",
+	L"Джексон",
+	L"Грант",
+	L"Дэвис",
+	L"Коллинс",
+	L"Брэдли",
+	L"Барлоу"
 }; 
  int genious_random(int first,int last);
-
- //goooool
  class Sprite {
  protected:
 	 SDL_Texture* texture = nullptr;
-	 std::string path;
-	 int x, y, w, h;
  public:
+	 std::string path;
+	 int x = 0, y = 0, w = 25, h = 25;
 	 virtual void RenderTexture(SDL_Renderer* ren) {
 		 SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
 		 SDL_Rect dst = { x,y,w,h };
 		 SDL_RenderCopy(ren, texture, nullptr, &dst);
 	 }
-	 Sprite() {
+	 /*
+	Sprite() {
 		x = 0;
 		y = 0;
 		w = 25;
 		h = 25;
 		path = "";
 	 };
+	 */
+	 Sprite() {}
+	 /*
 	 Sprite(const char* qpath, SDL_Renderer* ren,int mx, int my, int mw, int mh) {
 		 path = qpath;
 		 texture = IMG_LoadTexture(ren, qpath);
@@ -93,7 +101,12 @@ std::vector<std::string> surnames{ //= new std::vector<std::string>{
 		 y = my;
 		 w = mw;
 		 h = mh;
-		 //RenderTexture(ren, texture, x, y, w, h);
+	 }
+	 */
+	 Sprite(const char* qpath, SDL_Renderer* ren, int mx, int my, int mw, int mh):
+		 path(qpath), x{mx},y{my},w{mw},h{mh}
+	 {
+		 texture = IMG_LoadTexture(ren, qpath);
 	 }
 	 virtual void update(SDL_Renderer* ren) {
 		 RenderTexture(ren);
@@ -106,7 +119,8 @@ std::vector<std::string> surnames{ //= new std::vector<std::string>{
 		 }
 	 }
 	 Sprite(const Sprite& other) {
-		 texture = other.texture;
+		 //texture = other.texture;
+		 texture = IMG_LoadTexture(ren, other.path.c_str());
 		 path = other.path;
 		 x = other.x;
 		 y = other.y;
@@ -117,7 +131,8 @@ std::vector<std::string> surnames{ //= new std::vector<std::string>{
 	 Sprite& operator=(const Sprite& other) {
 		 if (this != &other) {
 			 SDL_DestroyTexture(texture);
-			 texture = other.texture;
+			 texture = IMG_LoadTexture(ren, other.path.c_str());
+			 //texture = other.texture;
 			 path = other.path;
 			 x = other.x;
 			 y = other.y;
