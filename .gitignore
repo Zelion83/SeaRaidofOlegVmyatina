@@ -41,8 +41,6 @@ target/
 
 # Windows Installer files (Visual Studio)
 *.vsix
-.vs2019/
-.vs2022/
 
 # .NET Core files
 project.lock.json
@@ -55,8 +53,13 @@ ScaffoldingReadMe.txt
 # JetBrains Rider
 .idea/
 
-# Windows Installer files (for .NET Core projects)
-*.dbmdl
+# Visual Studio database files
+*.db
+*.db-shm
+*.db-wal
+
+# Visual Studio IPC files
+*.ipch
 
 # Tye
 .tye/
@@ -78,4 +81,3 @@ appsettings.Staging.json
 *.vsix
 .vs2019/
 .vs2022/
-
