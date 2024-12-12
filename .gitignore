@@ -88,3 +88,4 @@ appsettings.Staging.json
 *.ilk
 *.log
 *.tlog
+x64/
