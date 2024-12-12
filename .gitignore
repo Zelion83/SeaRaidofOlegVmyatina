@@ -1,0 +1,81 @@
+# Windows
+Thumbs.db
+Desktop.ini
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# User-specific files (Windows)
+.vs/
+.vs2019/
+.vs2022/
+.idea/
+.vscode/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]ebugFull/
+[Dd]ist/
+[Dd]ebugTests/
+[Dd]ebugLoc/
+[Dd]ebug_x86/
+[Dd]ebug_x64/
+[Dd]ebug_ARM/
+[Dd]ebug_AnyCPU/
+[Dd]Release/
+[Dd]eploy/
+bin/
+obj/
+out/
+target/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer files (Visual Studio)
+*.vsix
+.vs2019/
+.vs2022/
+
+# .NET Core files
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# JetBrains Rider
+.idea/
+
+# Windows Installer files (for .NET Core projects)
+*.dbmdl
+
+# Tye
+.tye/
+
+# ASP.NET
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+
+# Visual Studio for Mac
+.vscode/
+.vs2019/
+.vs2022/
+.idea/
+.vscode/
+
+# Windows Installer files (Visual Studio for Mac)
+*.vsix
+.vs2019/
+.vs2022/
+
