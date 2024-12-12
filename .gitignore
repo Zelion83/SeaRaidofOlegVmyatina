@@ -81,3 +81,10 @@ appsettings.Staging.json
 *.vsix
 .vs2019/
 .vs2022/
+
+#my hernya
+*.pdb
+*.idb
+*.ilk
+*.log
+*.tlog
