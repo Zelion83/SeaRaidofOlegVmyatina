@@ -28,7 +28,7 @@ public:
 	}
 	*/
 	Button() {  };
-	Button( SDL_Renderer* ren, const wchar_t* mtext, int mrazmer, SDL_Rect rect,const char* newpath, const char* qpath = "textures/fon.png", const char* mfontpath = "font/OpenSans-Light.ttf") {
+	Button( SDL_Renderer* ren, const wchar_t* mtext, int mrazmer, SDL_Rect rect,const char* newpath = "textures/active_fon.png", const char* qpath = "textures/fon.png", const char* mfontpath = "font/OpenSans-Light.ttf") {
 		path = qpath;
 		if (texture != nullptr) SDL_DestroyTexture(texture);
 		if (text.font != nullptr) TTF_CloseFont(text.font);
@@ -118,7 +118,9 @@ public:
 		text.y += y;
 		text.x += x;
 	}
-	
+	void settext(const wchar_t* newtext,SDL_Renderer* ren) {
+		this->text.rename(newtext, ren);
+	}
 	~Button() {
 		
 		
@@ -126,7 +128,7 @@ public:
 		if (texture != nullptr) {
 			SDL_DestroyTexture(texture);
 		}
-		if (newtexture != nullptr) { // ошибка с inventory возникает потому, что page1 и page2 очищаются во второй раз
+		if (newtexture != nullptr) { 
 			SDL_DestroyTexture(newtexture);
 		}
 		

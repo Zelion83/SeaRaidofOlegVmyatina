@@ -7,15 +7,12 @@
 class Menu:Level {
 public: // ÊÎĞÎ×Å ÁÅÄÀ Â ÍÅÏĞÀÂÈËÜÍÎÉ ÈÍÈÖÈÀËÈÇÀÖÈÈ, ÓÊÀÇÀÒÅËÈ ÈÍÈÖÈÀËÈÇÈĞÓŞÒÑß Ó ÌÅÍß ÏĞÀÂÈËÜÍÎ, À ÂÎÒ ÎÁÚÅÊÒÛ ÍÅÒ??????????????????????
 	int page = 1;
-	Sprite pikcha;
+	//Sprite pikcha;
 	std::vector<std::vector<Button*>> alt;
-	Button button;// = Button(ren, L"Òåñò", 72, { 1000,900,500,100 }, "textures/active_fon.png");
-	//ButtonManager manager;
 	Menu(SDL_Renderer* ren) {
 		if (buttons.size() == 0) {
 			std::vector<Button> q;
 			SDL_Rect rect = { 1280,200,500,100 };
-			button = { ren, L"Òåñò", 48, { 1000,900,500,100 }, "textures/active_fon.png" };
 			pikcha = { "textures/korablik_menu.png", ren, 0, 200, (int)(1280 * 0.9), (int)(720 * 0.9) }; //À İÒÎ ÒÎÃÄÀ ÏÎ×ÅÌÓ ĞÀÁÎÒÀÅÒ?????????
 			q.push_back(  Button(ren, L"íîâàÿ èãğà", 48, rect, "textures/active_fon.png"));
 			rect.y += 150;
@@ -36,7 +33,6 @@ public: // ÊÎĞÎ×Å ÁÅÄÀ Â ÍÅÏĞÀÂÈËÜÍÎÉ ÈÍÈÖÈÀËÈÇÀÖÈÈ, ÓÊÀÇÀÒÅËÈ ÈÍÈÖÈÀËÈÇÈĞÓŞÒÑß 
 	}
 	void update( SDL_Renderer* ren) {
 		pikcha.update(ren);
-		button.update(ren);
 		
 		for (int i = 0; i < buttons[0].size(); i++) {
 			

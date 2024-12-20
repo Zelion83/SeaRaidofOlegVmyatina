@@ -3,6 +3,7 @@
 #include "Button.h"
 class Level {
 protected:
+    Sprite pikcha;
     int currentrow = -1;
     int currentbutton = -1;
     std::vector<std::vector<Button>> buttons;

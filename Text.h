@@ -64,6 +64,7 @@ public:
 		text = newname;
 		SDL_FreeSurface(surface);
 		surface = TTF_RenderUNICODE_Solid(font, (Uint16*)text.c_str(), color);
+		TTF_SizeUNICODE(font, (Uint16*)text.c_str(), &w, &h);
 		SDL_DestroyTexture(texture);
 		texture = SDL_CreateTextureFromSurface(ren, surface);
 	}

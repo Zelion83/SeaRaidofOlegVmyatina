@@ -48,13 +48,13 @@ public:
 		for (int i = 0; i < ship.crew.size(); i++) {
 			std::wstring mtext = ship.crew[i].name + L"	" + L"ÎÇ: " + std::to_wstring(ship.crew[i].ghp()) + L"	ÎÄ: " + std::to_wstring(ship.crew[i].gdmg())
 				+ L" öåíà: " + std::to_wstring(ship.crew[i].gprice());
-			int y = 590 + i * 100;
+			int y = 190 + i * 100;
 			int x = 90;
 			if (i < 6) {
 				w.push_back(  Button(ren, mtext.c_str(), 36, { x,y,500,100 }, "textures/active_fon.png"));
 			}
 			if (i >= 6) {
-				y = 590 + (i - 6) * 100;
+				y = 190 + (i - 6) * 100;
 				x = 940;
 				e.push_back(  Button(ren, mtext.c_str(), 36, { x,y,500,100 }, "textures/active_fon.png"));
 			}
@@ -68,13 +68,13 @@ public:
 		q.push_back(go_back);
 		addButtonRow(q);
 		for (int i = 0; i < ship.inventory.size(); ++i) {
-			int y = 590 + i * 100;
+			int y = 190 + i * 100;
 			int x = 90;
 			if (i < 6) {
 				iw.push_back(  Button(ren, ship.inventory[i] .convert_to_string().c_str(), 36, {x,y,500,100}, "textures/active_fon.png"));
 			}
 			if (i >= 6) {
-				y = 590 + (i - 6) * 100;
+				y = 190 + (i - 6) * 100;
 				x = 940;
 				ie.push_back(  Button(ren, ship.inventory[i] .convert_to_string().c_str(), 36, {x,y,500,100}, "textures/active_fon.png"));
 			}

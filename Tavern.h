@@ -9,7 +9,7 @@
 Ship ship(10, 1000);
 class Tavern:Level {
 public: 
-	Sprite pikcha;
+	//Sprite pikcha;
 	Button gtta,inv;
 	Button gold;
 	Text tgold,texts;
@@ -38,13 +38,13 @@ public:
 			std::vector<Button> ie;
 			std::vector<Button> iw;
 			std::vector<Button> iq;
-			int chislo = genious_random(2, 10);
+			int chislo = genious_random(2, 6);
 			int chislo1 = genious_random(1, items.size()-1);
 			for (int i = 0; i < chislo1; ++i) {
 				Item item = items[genious_random(0, items.size()-1)];
 				itemss.push_back(item);
 			}
-			for (int i = 0; i < 3;/*chislo + 1;*/ i++) {
+			for (int i = 0; i < chislo; i++) {
 				int mname = genious_random(0, names.size() - 1);
 				int msurname = genious_random(0, surnames.size() - 1);
 				Sailor freak;
@@ -54,16 +54,16 @@ public:
 				freaks.push_back(freak);
 			}
 			
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < chislo; i++) {
 				std::wstring mtext = freaks[i].name + L"	" + L"ÎÇ: " + std::to_wstring(freaks[i].ghp()) + L"	ÎÄ: " + std::to_wstring(freaks[i].gdmg())
 					+ L" öåíà: " + std::to_wstring(freaks[i].gprice());
 				int y = 590 + i * 100;
 				int x = 90;
-				if (i < 6) {
+				if (i < 4) {
 					w.push_back( Button(ren, mtext.c_str(), 36, { x,y,500,100 }, "textures/active_fon.png"));
 				}
-				if (i >= 6) {
-					y = 590 + (i - 6) * 100;
+				if (i >= 4) {
+					y = 590 + (i - 4) * 100;
 					x = 940;
 					e.push_back( Button(ren, mtext.c_str(), 36, { x,y,500,100 }, "textures/active_fon.png"));
 				}
@@ -97,26 +97,7 @@ public:
 			itbuttons.push_back(iw);
 			itbuttons.push_back(ie);
 			itbuttons.push_back(iq);
-			/*
-			for (int i = 0; i < iw.size();++i) {
-				delete iw[i];
-			}
-			for (int i = 0; i < ie.size(); ++i) {
-				delete ie[i];
-			}
-			for (int i = 0; i < iq.size(); ++i) {
-				delete iq[i];
-			}
-			for (int i = 0; i < q.size(); ++i) {
-				delete q[i];
-			}
-			for (int i = 0; i < w.size(); ++i) {
-				delete w[i];
-			}
-			for (int i = 0; i < e.size(); ++i) {
-				delete e[i];
-			}
-			*/
+			
 	}
 	virtual void manageButton() {
 		currentrow = -1;
@@ -172,15 +153,15 @@ public:
 		if(page == 2)Tavern::manageButton();
 		if (type == SDL_MOUSEBUTTONDOWN && currentrow != -1 && currentbutton != -1) {
 			if (page == 1) {
-				if (buttons[currentrow][currentbutton] .get_text() == L"â ïðèêëþ÷åíèå") { 
-					current_level = ADVENTURE;
+				if (buttons[currentrow][currentbutton].get_text() == L"â ïðèêëþ÷åíèå") { 
+					current_level = genious_random(CHILL,MAP);
 					return;
 				}
-				if (buttons[currentrow][currentbutton] .get_text() == L"äàëåå") {
+				if (buttons[currentrow][currentbutton].get_text() == L"äàëåå") {
 					page = 2;
 					return;
 				}
-				if (buttons[currentrow][currentbutton] .get_text() == L"ÈÍÂÅÍÒÀÐÜ") {
+				if (buttons[currentrow][currentbutton].get_text() == L"ÈÍÂÅÍÒÀÐÜ") {
 					current_level = INVENTORY;
 					return;
 				}
@@ -202,7 +183,7 @@ public:
 					return;
 				}
 				if (ship.inventory.size() < 10) {
-					ship.add_item(itbuttons[currentrow][currentbutton] .get_text());
+					ship.buy_item(itbuttons[currentrow][currentbutton] .get_text());
 					itbuttons[currentrow].erase(itbuttons[currentrow].begin() + currentbutton);
 					
 
@@ -214,21 +195,5 @@ public:
 			
 		}
 	}
-	/*
-	~Tavern() {
-		for (auto& i : buttons) {
-			for (auto j : i) {
-				delete j;
-				j = nullptr;
-			}
-		}
-		for (auto& i : itbuttons) {
-			for (auto j : i) {
-				delete j;
-				j = nullptr;
-			}
-		}
-		delete pikcha, gtta, inv, gold, tgold, texts, page1, page2;
-	}
-	*/
+	
 };

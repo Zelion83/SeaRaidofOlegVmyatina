@@ -12,10 +12,11 @@ class Sailor {
 	int dmg = 0;
 	int sila = (hp + dmg) / 2;
 	int price = sila;
+	
 public:
 	friend class Ship;
 	std::wstring name;
-
+	
 	Sailor() {
 
 		hp = genious_random(0, 100);
@@ -47,45 +48,7 @@ public:
 	void csila(int n) {
 		sila =  n;
 	}
-	/*
-	 Sailor operator =(Sailor& sailor) {
-		hp = sailor.hp;
-		dmg = sailor.hp;
-		sila = sailor.sila;
-		price = sailor.price;
-		name = sailor.name;
-		return *this;
-	}
 	
-
-	Sailor(const Sailor& sailor) {
-
-		hp = sailor.hp;
-		dmg = sailor.dmg;
-		sila = sailor.sila;
-		price = sailor.price;
-		name = sailor.name;
-	}
-	
-	bool operator ==(Sailor& sailor) {
-		if (hp == sailor.hp &&
-			dmg == sailor.hp &&
-			sila == sailor.sila &&
-			price == sailor.price &&
-			name == sailor.name) {
-			return true;
-		}
-		else {
-			return false;
-		}
-		
-		hp == sailor.hp;
-		dmg == sailor.hp;
-		sila == sailor.sila;
-		price == sailor.price;
-		name == sailor.name;
-		return *this;
-		*/
 	
 	Sailor(int hp, int dmg, int price, const wchar_t* name) {
 		this->hp = hp;
@@ -108,6 +71,7 @@ public:
 	friend class Tavern;
 	int power;
 	int morale;
+	int proviant = 0;
 	Ship(int size, int gold) {
 		crewsize = size;
 		this->gold = gold;
@@ -128,6 +92,9 @@ public:
 		for (int i = 0; i < crew.size(); i++) {
 			power += crew[i].sila;
 		}
+	}
+	Sailor get_sailor(int index) {
+		if(index < crew.size())return crew[index];
 	}
 	void push_string(std::wstring s) {
 		if (crew.size() < crewsize) {
@@ -161,6 +128,10 @@ public:
 		return freak;
 		
 	}
+	Sailor decode_sailor(int index) {
+		return crew[index];
+
+	}
 	void delete_sailor(Sailor freak) {
 		gold += freak.price;
 		power -= ((freak.hp + freak.dmg) / 2);
@@ -192,7 +163,7 @@ public:
 		return none;
 
 	}
-	void add_item(std::wstring s) {
+	void buy_item(std::wstring s) {
 		auto item = decode_item(s);
 		if (item.name == L"Кот") {
 			morale += 10;
@@ -204,6 +175,22 @@ public:
 			power += 20;
 		}
 		gold -= item.price;
+		inventory.push_back(item);
+	}
+	void add_item(int index) {
+		auto item = items[index];
+		if (item.name == L"Кот") {
+			morale += 10;
+		}
+		if (item.name == L"Обезьяна") {
+			morale += 15;
+		}
+		if (item.name == L"Пушки") {
+			power += 20;
+		}
+		if (item.name == L"Капитанский мундир") {
+			morale += 10;
+		}
 		inventory.push_back(item);
 	}
 	void delete_item(std::wstring s) {
@@ -219,24 +206,30 @@ public:
 				if (inventory[i].name == L"Пушки") {
 					power -= 20;
 				}
+				if (item.name == L"Капитанский мундир") {
+					morale -= 10;
+				}
 				gold += item.price;
 				inventory.erase(inventory.begin() + i);
 			}
 		}
+	}
+	void reset(int size, int gold) {
+		crew.clear();
+		inventory.clear();
+		power = 0;
+		morale = 100;
+		crewsize = size;
+		this->gold = gold;
 	}
 	std::wstring get_item_string(int i) {
 		if (i < inventory.size()) {
 			std::wstring mtext = inventory[i].name;
 			return mtext;
 		}
-	}
-	/*
-	~Ship() { 
-		for (auto i : items) {
-			delete i;
-			i = nullptr;
-			
+		else {
+			return L"";
 		}
 	}
-	*/
+	
 };

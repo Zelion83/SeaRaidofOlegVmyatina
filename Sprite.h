@@ -13,18 +13,24 @@ enum levels {
 	MAIN_MENU,
 	SETTINGS,
 	TAVERN,
-	ADVENTURE,
 	INVENTORY,
-	END
+	END,
+	CHILL,
+	ADVENTURE,
+	REBELLION,
+	PLAGUE,
+	MAP
 };
+/*
 enum events {
 	PIRATES,
 	ISLAND,
 	PLAGUE,
 	MAP,
-	REBELLION //делаю первым
+	REBELLION, //делаю первым
+	CHILL
 };
-
+*/
 /*
 std:: vector<std::string>items {
 	"CAT",

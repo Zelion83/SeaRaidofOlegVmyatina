@@ -11,7 +11,6 @@ public:
 		pikcha =  Sprite("textures/cherepok2.png", ren, 300, 0, 1024, 576);
 		SDL_Rect rect = { 100,676,500,100 };
 		q.push_back( Button(ren, L"•Β μενώ", 48, rect, "textures/active_fon.png"));
-		q.push_back(Button(ren, L"•Β μενώ", 48, {100,776,500,100}, "textures/active_fon.png"));
 		addButtonRow(q);
 	}
 	void update() {
@@ -32,16 +31,5 @@ public:
 			}
 		}
 	}
-	/*
-	~End() {
-		for (auto& i : buttons) {
-			for (auto j : i) {
-				delete j;
-				j = nullptr;
-			}
-		}
-		delete pikcha;
-		delete text;
-	}
-	*/
+	
 };
