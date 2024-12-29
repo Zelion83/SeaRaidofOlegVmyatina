@@ -107,7 +107,7 @@ public:
 				da.settext(L"”йти с острова",ren);
 				buttons[0].push_back(da);
 				ship.morale -= genious_random(1, 10);
-				ship.add_item(genious_random(0, items.size()));
+				ship.add_item(genious_random(0, items.size()-1));
 				return;
 			}
 			if (buttons[currentrow][currentbutton].get_text() == L"”йти с острова") {

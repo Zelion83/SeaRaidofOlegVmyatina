@@ -5,9 +5,9 @@
 #include"Button_manager.h"
 #include<vector>
 class Menu:Level {
-public: // йнпнве аедю б меопюбхкэмни хмхжхюкхгюжхх, сйюгюрекх хмхжхюкхгхпсчряъ с лемъ опюбхкэмн, ю бнр назейрш мер??????????????????????
+public: 
 	int page = 1;
-	//Sprite pikcha;
+
 	std::vector<std::vector<Button*>> alt;
 	Menu(SDL_Renderer* ren) {
 		if (buttons.size() == 0) {
@@ -40,13 +40,7 @@ public: // йнпнве аедю б меопюбхкэмни хмхжхюкхгюжхх, сйюгюрекх хмхжхюкхгхпсчряъ 
 			
 		}
 		
-		/*
-		for (int i = 0; i < alt[0].size(); i++) {
-
-			alt[0][i]->update(ren);
-
-		}
-		*/
+		
 	}
 	void manageButton(size_t type){
 		Level::manageButton();
@@ -57,17 +51,5 @@ public: // йнпнве аедю б меопюбхкэмни хмхжхюкхгюжхх, сйюгюрекх хмхжхюкхгхпсчряъ 
 		}
 		
 	}
-	/*
-	~Menu() {
-		
-		for (auto& i : alt) {
-			for (auto j : i) {
-				delete j;
-				j = nullptr;
-			}
-		}
-		
-		//delete pikcha;
-	}
-	*/
+	
 };

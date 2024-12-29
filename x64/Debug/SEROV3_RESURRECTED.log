@@ -1,3 +1,18 @@
-﻿  SEROV3_RESURRECTED.vcxproj -> C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\x64\Debug\SEROV3_RESURRECTED.exe
-  SEROV3_RESURRECTED.vcxproj -> C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\x64\Debug\SEROV3_RESURRECTED.pdb (частичный -> полный PDB)
-C:\Users\???????\Desktop\SEROV3_RESURRECTED\x64\Debug\SEROV3_RESURRECTED.pdb : fatal error CMF1107: 
+﻿  main.cpp
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(116,14): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(117,14): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(118,13): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Button.h(119,13): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(82,19): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(85,10): warning C4244: return: преобразование "unsigned __int64" в "int", возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(42,48): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(44,53): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(48,48): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Tavern.h(49,54): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Rebellion.h(47,11): warning C4804: <=: небезопасное использование типа "bool" в операции
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\fmap.h(110,47): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Plague.h(24,21): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\main.cpp(39,9): warning C4930: Sprite pikcha(void): функция с прототипом не вызвана (предполагалось определение переменной?)
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Text.h(129): warning C4715: Text::operator=: значение возвращается не при всех путях выполнения
+C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\Ship&Sailor.h(98): warning C4715: Ship::get_sailor: значение возвращается не при всех путях выполнения
+  SEROV3_RESURRECTED.vcxproj -> C:\Users\Алексей\Desktop\SEROV3_RESURRECTED\x64\Debug\SEROV3_RESURRECTED.exe

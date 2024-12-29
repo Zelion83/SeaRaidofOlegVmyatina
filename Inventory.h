@@ -85,26 +85,7 @@ public:
 		items.push_back(iq);
 		items.push_back(iw);
 		items.push_back(ie);
-		/*
-		for (int i = 0; i < iw.size(); ++i) {
-			delete iw[i];
-		}
-		for (int i = 0; i < ie.size(); ++i) {
-			delete ie[i];
-		}
-		for (int i = 0; i < iq.size(); ++i) {
-			delete iq[i];
-		}
-		for (int i = 0; i < q.size(); ++i) {
-			delete q[i];
-		}
-		for (int i = 0; i < w.size(); ++i) {
-			delete w[i];
-		}
-		for (int i = 0; i < e.size(); ++i) {
-			delete e[i];
-		}
-		*/
+		
 	}
 	void update(SDL_Renderer* ren,Ship& ship) {
 		if (page == 1) {
